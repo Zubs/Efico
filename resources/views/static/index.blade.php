@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Efico</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/index.css">
-<script src="assets/js/script.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
 <div class="splash ">
@@ -30,19 +30,19 @@
                 </div>
                 <ul class="flex row">
                     <li>
-                        <a href="#">home</a>
+                        <a href="{{ route('index') }}">home</a>
                     </li>
                     <li>
-                        <a href="./Abouts.html">about</a>
+                        <a href="{{ route('about') }}">about</a>
                     </li>
                     <li>
-                        <a href="./contact.html">contact us</a>
+                        <a href="{{ route('contact') }}">contact us</a>
                     </li>
                     <li>
                         <a href="./service.html">services</a>
                     </li>
                     <li>
-                        <a href="./news.html">news</a>
+                        <a href="{{ route('news.index') }}">news</a>
                     </li>
                     <li>
                         <a href="./faqs.html">faqs</a>

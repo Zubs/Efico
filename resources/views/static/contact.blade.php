@@ -54,7 +54,6 @@
   <p class="note"><b>SEND US A MESSAGE</b></p>
     <div class="form mx-auto">
       {!! Form::open(['route' => 'submitContact', 'method' => 'POST']) !!}
-        {{ Form::token() }}
         {{ Form::text('name', '', $attributes = ['required' => "", 'placeholder' => "Name", 'class' => "form-control",]) }}
         <br>
         {{ Form::email('email', '', $attributes = ['required' => "", 'placeholder' => "Email", 'class' => "form-control",]) }}
