@@ -42,8 +42,20 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function submitContact()
+    public function submitContact(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+
+        $message = new Messages;
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->message = $request->message;
+        $message->save();
+
         return view('static.thanks');
     }
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../resources/css/contact.css">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Contact</title>
 </head>
@@ -22,11 +22,11 @@
     <div class="collapse navbar-collapse up"  id="navbarSupportedContent" >
       <ul class="navbar-nav ml-auto">
       <div class="navbar-nav" >
-          <a class="nav-item nav-link" href="index.html">HOME</a>
-          <a class="nav-item nav-link" href="Abouts.html">ABOUT US</a>
-          <a class="nav-item nav-link active" href="contact.html">CONTACT US</a>
+          <a class="nav-item nav-link" href="{{ route('index') }}">HOME</a>
+          <a class="nav-item nav-link" href="{{ route('about') }}">ABOUT US</a>
+          <a class="nav-item nav-link active" href="{{ route('contact') }}">CONTACT US</a>
           <a class="nav-item nav-link" href="service.html">SERVICES</a>
-          <a class="nav-item nav-link" href="news.html">NEWS <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="{{ route('news.index') }}">NEWS <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="faqs.html">FAQS</a>
         </div>
         </ul>
@@ -53,18 +53,21 @@
   <div class="container mx-auto">
   <p class="note"><b>SEND US A MESSAGE</b></p>
     <div class="form mx-auto">
-    <input type="text"  placeholder="Name" required/>
-    <br>
-    <br>
+      <form action="{{ route('submitContact') }}" method="POST">
+        @csrf
+        <input type="text"  placeholder="Name" name="name" required/>
+        <br>
+        <br>
 
-    <input type="email" placeholder="Email" required/>
-    <br>
-    <br>
+        <input type="email" placeholder="Email" name="email" required/>
+        <br>
+        <br>
 
-    <input class="message" type="text" placeholder="Message" required/>
-    <br>
-    <br>
-    <button class="btn btn-primary" style="background-color: #3c185b; border: none;" type="button" >Contact Us</button>
+        <input class="message" type="text" placeholder="Message" name="message" required/>
+        <br>
+        <br>
+        <button class="btn btn-primary" style="background-color: #3c185b; border: none;" type="submit" >Contact Us</button>
+      </form>
     </div>
   </div>
   <br>
@@ -84,7 +87,7 @@
     <div class="row ">
         <div class="col">
             <p><Strong>QUICK LINKS</Strong></p>
-            <a href="Abouts.html" class="text-light">About Us</a> <br>
+            <a href="{{ route('about') }}" class="text-light">About Us</a> <br>
             <a href="#" class="text-light" data-toggle="modal" data-target="#exampleModal1">Newsletter</a>
         </div>
         <div class="col">
