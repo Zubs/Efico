@@ -38,11 +38,11 @@
         <div class="collapse navbar-collapse up"  id="navbarSupportedContent" >
           <ul class="navbar-nav ml-auto">
           <div class="navbar-nav" >
-              <a class="nav-item nav-link" href="index.html">HOME</a>
-              <a class="nav-item nav-link active" href="Abouts.html">ABOUT US</a>
-              <a class="nav-item nav-link" href="contact.html">CONTACT US</a>
+              <a class="nav-item nav-link" href="{{ route('index') }}">HOME</a>
+              <a class="nav-item nav-link active" href="{{ route('about') }}">ABOUT US</a>
+              <a class="nav-item nav-link" href="{{ route('contact') }}">CONTACT US</a>
               <a class="nav-item nav-link" href="service.html">SERVICES</a>
-              <a class="nav-item nav-link" href="news.html">NEWS <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="{{ route('news.index') }}">NEWS <span class="sr-only">(current)</span></a>
               <a class="nav-item nav-link" href="faqs.html">FAQS</a>
             </div>
             </ul>
@@ -143,7 +143,7 @@
     <div class="row ">
         <div class="col">
             <p><Strong>QUICK LINKS</Strong></p>
-            <a href="Abouts.html" class="text-light">About Us</a> <br>
+            <a href="{{ route('about') }}" class="text-light">About Us</a> <br>
             <a href="#" class="text-light" data-toggle="modal" data-target="#exampleModal1">Newsletter</a>
         </div>
         <div class="col">
