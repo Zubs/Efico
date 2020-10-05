@@ -23,6 +23,8 @@ Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'submitContact'])->name('submitContact');
+Route::get('/faqs', [PagesController::class, 'faqs'])->name('faqs');
+Route::get('/services', [PagesController::class, 'services'])->name('services');
 
 // Admin routes
 Route::group([
@@ -59,8 +61,12 @@ Route::group([
 	'prefix' => '/training',
 	'as' => 'training.',
 ], function () {
-	Route::get('/', [TrainingController::class, 'create'])->name('new');
+	Route::get('/', [TrainingController::class, 'index'])->name('index');
 	Route::post('/', [TrainingController::class, 'store'])->name('store');
+	Route::get('/new', [TrainingController::class, 'create'])->name('new');
+	Route::get('/{id}', [TrainingController::class, 'show'])->name('show');
+	Route::get('/update/{id}', [TrainingController::class, 'edit'])->name('edit');
+	Route::post('/update/{id}', [TrainingController::class, 'update'])->name('update');
 });
 
 Auth::routes();

@@ -10,7 +10,7 @@ class NewsController extends Controller
     // Requires authentication to view the pages
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
     }
     
     /**
@@ -66,7 +66,7 @@ class NewsController extends Controller
         $final_image = $image_name.'_'.time().'.'.$image_extension;
 
         //Upload image
-        $path = $request->file('cover_image')->storeAs('public/images/cover_images', $final_image);
+        $path = $request->file('cover_image')->storeAs('public/images/news/cover_images', $final_image);
 
         $news = new News;
         $news->title = $request->title;
@@ -99,7 +99,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news = News::find($id);
+
+        return view('news.edit')->with('news', $news);
     }
 
     /**
@@ -111,7 +113,41 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'author' => 'required',
+        ]);
+
+        $news = News::find($id);
+
+        if ($request->has('cover_image')) {
+            $this->validate($request, ['cover_image' => 'image|max:2999']);
+
+            //Get uploaded image name
+            $cover_image = $request->file('cover_image')->getClientOriginalName();
+
+            //Get just name, without the extension
+            $image_name = pathinfo($cover_image, PATHINFO_FILENAME);
+
+            //Get just extension, without the name
+            $image_extension = $request->file('cover_image')->getClientOriginalExtension();
+
+            //How it'll be stored
+            $final_image = $image_name.'_'.time().'.'.$image_extension;
+
+            //Upload image
+            $path = $request->file('cover_image')->storeAs('public/images/cover_images', $final_image);
+
+            $news->cover_image = $final_image;
+        };
+
+        $news->title = $request->title;
+        $news->body = $request->body;
+        $news->author = $request->author;
+        $news->save();
+
+        return redirect()->route('news.index');
     }
 
     /**
@@ -122,6 +158,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        News::delete($id);
+
+        return redirect()->route('news.index');
     }
 }
