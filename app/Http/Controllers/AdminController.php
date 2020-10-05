@@ -43,13 +43,10 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
             'email' => 'required',
-            'password' => 'password',
         ]);
 
         $admin = new Admin;
-        $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->save();
 

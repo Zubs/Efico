@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Trainee;
 
 class TraineeController extends Controller
 {
+    // Requires authentication to view the pages
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,9 @@ class TraineeController extends Controller
      */
     public function index()
     {
-        //
+        $trainees = Trainee::orderBy('created_at', 'desc')->paginate(30);
+
+        return view('trainee.index');
     }
 
     /**
@@ -23,7 +31,7 @@ class TraineeController extends Controller
      */
     public function create()
     {
-        //
+        return view('trainee.create');
     }
 
     /**
@@ -34,7 +42,21 @@ class TraineeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'training_id' => 'required',
+            // 'password' => 'required', This only works if a trainee would be able to Log in.
+        ]);
+
+        $trainee = new Trainee;
+        $trainee->name = $request->name;
+        $trainee->email = $request->email;
+        $trainee->training_id = $request->training_id;
+        $trainee->save();
+
+        // This depends on who's making the addition
+        return redirect()->route('trainee.index');
     }
 
     /**

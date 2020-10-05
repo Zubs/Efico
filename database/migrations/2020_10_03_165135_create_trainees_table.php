@@ -15,6 +15,7 @@ class CreateTraineesTable extends Migration
     {
         Schema::create('trainees', function (Blueprint $table) {
             $table->id();
+            $table->integer('training_id');
             $table->timestamps();
         });
     }
