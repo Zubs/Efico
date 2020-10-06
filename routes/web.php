@@ -58,6 +58,7 @@ Route::group([
 	Route::get('/new', [TraineeController::class, 'create'])->name('new');
 	Route::post('/', [TraineeController::class, 'store'])->name('store');
 	Route::get('/register', [TraineeController::class, 'register'])->name('register');
+	Route::post('/register', [TraineeController::class, 'postRegister'])->name('postRegister');
 });
 
 // Training routes

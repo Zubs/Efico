@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="service/style.css">
+    <link rel="stylesheet" href="{{ asset('css/service.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <title>Services</title>
+    <title>Efico | Services</title>
 </head>
 <body>
     <header>
     <nav class="navbar navbar-expand-lg navbar-dark z-depth-0" style="background-color: #3c185b; width: 100%; margin-left: 0; color: white;" >
         <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('index') }}">
         <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1592465124/logo_iyyhfa.png" width="60" height="20" alt="" loading="lazy">
         </a>
         <button class="navbar-toggler but" style="color: white;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,12 +21,12 @@
         <div class="collapse navbar-collapse up"  id="navbarSupportedContent" >
         <ul class="navbar-nav ml-auto">
         <div class="navbar-nav" >
-            <a class="nav-item nav-link" href="index.html">HOME</a>
-            <a class="nav-item nav-link" href="Abouts.html">ABOUT US</a>
-            <a class="nav-item nav-link" href="contact.html">CONTACT US</a>
-            <a class="nav-item nav-link active" href="service.html">SERVICES</a>
-            <a class="nav-item nav-link" href="news.html">NEWS <span class="sr-only"></span></a>
-            <a class="nav-item nav-link" href="faqs.html">FAQS</a>
+            <a class="nav-item nav-link" href="{{ route('index') }}">HOME</a>
+            <a class="nav-item nav-link" href="{{ route('about') }}">ABOUT US</a>
+            <a class="nav-item nav-link" href="{{ route('contact') }}">CONTACT US</a>
+            <a class="nav-item nav-link active" href="{{ route('contact') }}">SERVICES</a>
+            <a class="nav-item nav-link" href="{{ route('news.index') }}">NEWS <span class="sr-only"></span></a>
+            <a class="nav-item nav-link" href="{{ route('faqs') }}">FAQS</a>
             </div>
             </ul>
         </div>
@@ -111,15 +111,15 @@
     <div class="row ">
         <div class="col">
             <p><Strong>QUICK LINKS</Strong></p>
-            <a href="#" class="text-light">About Us</a> <br>
-            <a href="#" class="text-light">Newsletter</a>
+            <a href="{{ route('about') }}" class="text-light">About Us</a> <br>
+            <a href="{{ route('news.index') }}" class="text-light">Newsletter</a>
         </div>
         <div class="col">
         <p><Strong>SERVICES</Strong></p>
 
-        <a href="#" class="text-light">Career talks</a> <br>
-        <a href="#" class="text-light">Internship</a> <br>
-        <a href="#" class="text-light">Scholarship</a>
+        <a href="{{ route('services') }}" class="text-light">Career talks</a> <br>
+        <a href="{{ route('services') }}" class="text-light">Internship</a> <br>
+        <a href="{{ route('services') }}" class="text-light">Scholarship</a>
 
     </div>
     <div class="col">

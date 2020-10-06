@@ -46,7 +46,7 @@ class TraineeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource, by the admin in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -57,7 +57,6 @@ class TraineeController extends Controller
             'name' => 'required',
             'email' => 'required',
             'training_id' => 'required',
-            // 'password' => 'required', This only works if a trainee would be able to Log in.
         ]);
 
         $trainee = new Trainee;
@@ -66,9 +65,34 @@ class TraineeController extends Controller
         $trainee->training_id = $request->training_id;
         $trainee->save();
 
-        // The trainee should get a mail of successful registration
+        // The trainee should get a mail of successful registration with link to set password
 
-        // This depends on who's making the addition
+        return redirect()->route('trainee.index');
+    }
+
+    /**
+     * Store a newly created resource, by the user in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function postRegister(Request $request)
+    {
+        return [$request->name, $request->email, $request->training_id];
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'training_id' => 'required',
+        ]);
+
+        $trainee = new Trainee;
+        $trainee->name = $request->name;
+        $trainee->email = $request->email;
+        $trainee->training_id = $request->training_id;
+        $trainee->save();
+
+        // The trainee should get a mail of successful registration with link to set password
+
         return redirect()->route('trainee.index');
     }
 

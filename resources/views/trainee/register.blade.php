@@ -56,21 +56,22 @@
                     </p>
                 </div>
                 </div>
-                <form action="#" class="right" method="POST">
+                <form action="{{ route('trainee.postRegister') }}" class="right" method="POST">
                     <fieldset>
                         <div class="fields-container flex col">
+                            @csrf
                             <legend>Register</legend>
                             <br>
                             <div class="field flex col">
-                                <input type="text" name="full_name" id="full_name" required placeholder="Full Name">
+                                <input type="text" name="name" id="full_name" required placeholder="Full Name">
                             </div>
                             <div class="field flex col">
                                 <input type="email" name="email" id="full_name" required placeholder="Email Address">
                             </div>
                             <div class="field flex col">
-                                <select name="training" id="training" required="">
+                                <select name="training_id" id="training" required="">
                                     <option value="">Training</option>
-                                    <option value="">First Training - N40,000</option>
+                                    <option value="5">First Training - N40,000</option>
                                 </select>
                             </div>
                             <button>Register</button>

@@ -34,7 +34,7 @@ class PagesController extends Controller
      */
     public function services()
     {
-        return view('static.services');
+        return view('static.service');
     }
 
     /**
