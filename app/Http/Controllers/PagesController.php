@@ -24,7 +24,7 @@ class PagesController extends Controller
      */
     public function faqs()
     {
-        return view('static.faqs');
+        return view('static.faq');
     }
 
     /**
