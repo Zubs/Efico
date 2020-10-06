@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use Illuminate\Support\Str;
 
 class NewsController extends Controller
 {
@@ -70,6 +71,8 @@ class NewsController extends Controller
 
         $news = new News;
         $news->title = $request->title;
+        $news->uuid = (string) Str::uuid();
+        $news->slug = Str::slug($request->title, '-');
         $news->body = $request->body;
         $news->author = $request->author;
         $news->cover_image = $final_image;
@@ -84,9 +87,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $news = News::find($id);
+        $news = News::where('slug', $slug)->first();
 
         return view('news.show')->with('news', $news);
     }

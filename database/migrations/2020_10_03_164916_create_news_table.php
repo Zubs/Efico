@@ -20,6 +20,7 @@ class CreateNewsTable extends Migration
             $table->text('body');
             $table->string('author');
             $table->string('cover_image');
+            $table->string('slug');
             $table->timestamps();
         });
     }

@@ -36,7 +36,7 @@
         <article>
           <div class="container mx-auto">
             <div class="form mx-auto">
-              {!! Form::open(['route' => 'news.store', 'method' => 'POST']) !!}
+              {!! Form::open(['route' => 'news.store', 'method' => 'POST', 'files' => 'true',]) !!}
                 {{ Form::text('title', '', $attributes = ['required' => "", 'placeholder' => "Title", 'class' => "form-control",]) }}
                 <br>
                 {{ Form::textarea('body', '', $attributes = ['required' => "", 'placeholder' => "Write Article Here", 'id' => "wysiwyg", 'class' => "form-control",]) }}

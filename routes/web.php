@@ -17,9 +17,6 @@ use App\Http\Controllers\TrainingController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::post('/test', function () {
-// 	return 'hELLO';
-// })->name('test');
 
 // Static routes
 Route::get('/', [PagesController::class, 'index'])->name('index');
@@ -47,7 +44,7 @@ Route::group([
 	Route::get('/', [NewsController::class, 'index'])->name('index');
 	Route::post('/', [NewsController::class, 'store'])->name('store');
 	Route::get('/new', [NewsController::class, 'create'])->name('new');
-	Route::get('/{id}', [NewsController::class, 'show'])->name('show');
+	Route::get('/{slug}', [NewsController::class, 'show'])->name('show');
 	Route::get('/update/{id}', [NewsController::class, 'edit'])->name('edit');
 	Route::post('/update/{id}', [NewsController::class, 'update'])->name('update');
 });

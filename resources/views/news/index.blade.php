@@ -33,21 +33,23 @@
         <h2 class="text-light p-4 py-5 mb-5 eficoN" >Get the latest News and Articles about Efico and the Educational World</h2>
     </div>
     <div class="container py-4 mx-auto">
-        <div class="card card-deck mb-3 mx-auto" style="max-width: 90%;">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593450611/Animated_GIF-downsized_large_loej4i.gif" class="card-img" alt="...">
+        @foreach($news as $new)
+            <div class="card card-deck mb-3 mx-auto" style="max-width: 90%;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/storage/images/news/cover_images/{{ $new->cover_image }}" class="card-img" alt="...">
+                    </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ $new->title }}</h5>
+                    <p class="card-text">{!! Str::of($new->body)->limit(50) !!}</p>
+                    <a href="{{ route('news.show', $new->slug) }}" class="card-link">More</a>
+                    <p class="card-text"><small class="text-muted">{{ $new->created_at }}</small></p>
+                    </div>
                 </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit eum quae sit doloribus voluptates modi! Nam dolore ipsum voluptatem, culpa delectus eos dignissimos labore deleniti necessitatibus deserunt, atque nisi architecto.</p>
-                <a href="#" class="card-link">More</a>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
-            </div>
-        </div>
+        @endforeach
     </div>
     <footer>
         <div class="container-fluid footer py-5">
