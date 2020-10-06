@@ -55,6 +55,8 @@ class TraineeController extends Controller
         $trainee->training_id = $request->training_id;
         $trainee->save();
 
+        // The trainee should get a mail of successful registration
+
         // This depends on who's making the addition
         return redirect()->route('trainee.index');
     }

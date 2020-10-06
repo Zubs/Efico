@@ -52,41 +52,7 @@ class AdminController extends Controller
 
         // I'd be writing a mail to the admin to let them know they've been made admin, and also to make them set password;
 
-        return redirect()->route('admin.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return redirect()->route('admin.index')->with('success', 'Admin Added Successfully');
     }
 
     /**
@@ -97,6 +63,10 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // The admin should get a mail to know they've been removed as admin, with a reason
+        
+        Admin::delete($id);
+
+        return redirect('admin.index')->with('success', 'Admin Removed Successfully');
     }
 }

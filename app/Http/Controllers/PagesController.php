@@ -76,6 +76,8 @@ class PagesController extends Controller
         $message->message = $request->message;
         $message->save();
 
+        // David should get both a notification and a mail sha, from the guest
+
         return view('static.thanks');
     }
 }

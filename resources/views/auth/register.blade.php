@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -75,3 +75,9 @@
     </div>
 </div>
 @endsection
+ --}}
+
+{{-- Users Shouldn't be able to Sign Up yet --}}
+<script>
+    window.location = '/login'
+</script>

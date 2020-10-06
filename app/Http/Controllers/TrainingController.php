@@ -75,6 +75,8 @@ class TrainingController extends Controller
         $training->cover_image = $final_image;
         $training->save();
 
+        // All trainees should get a mail to let them know of the new training
+
         return redirect()->route('training.index');
     }
 
@@ -111,7 +113,7 @@ class TrainingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route('training.index');
     }
 
     /**

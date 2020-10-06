@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Comments extends Model
 {
     use HasFactory;
 
-    public function comments() {
-    	return $this->hasMany('App\Models\Comments');
+    public function news() {
+    	return $this->belongsTo('App\Models\News');
     }
 }
