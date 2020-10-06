@@ -54,8 +54,10 @@ Route::group([
 	'prefix' => '/trainee',
 	'as' => 'trainee.',
 ], function () {
-	Route::get('/', [TraineeController::class, 'create'])->name('new');
+	Route::get('/', [TraineeController::class, 'index'])->name('index');
+	Route::get('/new', [TraineeController::class, 'create'])->name('new');
 	Route::post('/', [TraineeController::class, 'store'])->name('store');
+	Route::get('/register', [TraineeController::class, 'register'])->name('register');
 });
 
 // Training routes

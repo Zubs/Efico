@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Efico - Registration</title>
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="stylesheet" href="./assets/css/form.css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 </head>
 <body>
     <div class="top__bg flex col">
         <header class="flex row">
             <div class="logo flex col">
-                <img src="./assets/img/efico_logo.svg" alt="">
+                <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1592465124/logo_iyyhfa.png" width="60" height="20" alt="" loading="lazy">
                 <p>your education will make sense</p>
             </div>
             <nav id="nav" class="flex row">
@@ -24,22 +24,22 @@
                 </div>
                 <ul class="flex row">
                     <li>
-                        <a href="./index.html">home</a>
+                        <a href="{{ route('index') }}">home</a>
                     </li>
                     <li>
-                        <a href="./Abouts.html">about</a>
+                        <a href="{{ route('about') }}">about</a>
                     </li>
                     <li>
-                        <a href="./contact.html">contact us</a>
+                        <a href="{{ route('contact') }}">contact us</a>
                     </li>
                     <li>
-                        <a href="./services.html">services</a>
+                        <a href="{{ route('services') }}">services</a>
                     </li>
                     <li>
-                        <a href="./news.html">news</a>
+                        <a href="{{ route('news.index') }}">news</a>
                     </li>
                     <li>
-                        <a href="./faqs">faqs</a>
+                        <a href="{{ route('faqs') }}">faqs</a>
                     </li>
                 </ul>
             </nav>
@@ -56,21 +56,22 @@
                     </p>
                 </div>
                 </div>
-                <form action="" class="right">
+                <form action="#" class="right" method="POST">
                     <fieldset>
                         <div class="fields-container flex col">
-                                <legend>Register</legend>
+                            <legend>Register</legend>
+                            <br>
                             <div class="field flex col">
-                                <label for="full_name">Full name</label>
-                                <input type="text" name="full_name" id="full_name" required>
+                                <input type="text" name="full_name" id="full_name" required placeholder="Full Name">
                             </div>
                             <div class="field flex col">
-                                    <label for="email">Email address</label>
-                                    <input type="email" name="email" id="full_name" required>
+                                <input type="email" name="email" id="full_name" required placeholder="Email Address">
                             </div>
                             <div class="field flex col">
-                                    <label for="training">Training</label>
-                                    <select name="training" id="training"></select>
+                                <select name="training" id="training" required="">
+                                    <option value="">Training</option>
+                                    <option value="">First Training - N40,000</option>
+                                </select>
                             </div>
                             <button>Register</button>
                         </div>
@@ -113,6 +114,6 @@
             </div>
         </ul>
     </footer>
-    <script src="./assets/js/index.js"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
 </body>
 </html>

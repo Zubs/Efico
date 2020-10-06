@@ -10,8 +10,9 @@ class TraineeController extends Controller
     // Requires authentication to view the pages
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['register']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +26,17 @@ class TraineeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource by an admin.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register()
+    {
+        return view('trainee.register');
+    }
+
+    /**
+     * Show the form for creating a new resource by the user.
      *
      * @return \Illuminate\Http\Response
      */
