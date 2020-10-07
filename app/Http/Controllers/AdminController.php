@@ -20,6 +20,16 @@ class AdminController extends Controller
      */
     public function index()
     {
+        return redirect()->route('home');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function all()
+    {
         $admins = Admin::all();
         return view('admin.index')->with('admins', $admins);
     }
@@ -44,10 +54,12 @@ class AdminController extends Controller
     {
         $this->validate($request, [
             'email' => 'required',
+            'role' => 'required',
         ]);
 
         $admin = new Admin;
         $admin->email = $request->email;
+        $admin->role = $request->role;
         $admin->save();
 
         // I'd be writing a mail to the admin to let them know they've been made admin, and also to make them set password;

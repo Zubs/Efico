@@ -33,7 +33,7 @@ Route::group([
 ], function () {
 	Route::get('/', [AdminController::class, 'index'])->name('index');
 	Route::post('/', [AdminController::class, 'store'])->name('store');
-	Route::get('/new', [AdminController::class, 'create'])->name('new');
+	Route::get('/all', [AdminController::class, 'all'])->name('all');
 });
 
 // News routes
