@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\News;
 
 class AdminController extends Controller
 {
@@ -32,6 +33,12 @@ class AdminController extends Controller
     {
         $admins = Admin::all();
         return view('admin.index')->with('admins', $admins);
+    }
+
+    public function news()
+    {
+        $news = News::all();
+        return view('admin.news')->with('news', $news);
     }
 
     /**

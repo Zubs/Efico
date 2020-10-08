@@ -34,6 +34,7 @@ Route::group([
 	Route::get('/', [AdminController::class, 'index'])->name('index');
 	Route::post('/', [AdminController::class, 'store'])->name('store');
 	Route::get('/all', [AdminController::class, 'all'])->name('all');
+	Route::get('/news', [AdminController::class, 'news'])->name('news');
 });
 
 // News routes

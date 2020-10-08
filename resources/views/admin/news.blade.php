@@ -10,7 +10,7 @@
     <meta name="author" content="Zubair Idris Aweda">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png"> -->
-    <title>Efico | All Admins</title>
+    <title>Efico | All News</title>
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href="{{ asset('template/assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
@@ -142,13 +142,13 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Staff List</h4>
+                        <h4 class="text-themecolor">All News</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
-                                <li class="breadcrumb-item active">Staff List</li>
+                                <li class="breadcrumb-item active">All News</li>
                             </ol>
                         </div>
                     </div>
@@ -169,34 +169,22 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Role</th>
+                                                <th>Title</th>
+                                                <th>Author</th>
+                                                <th>Views</th>
                                                 <th>Remove</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Davon</td>
-                                                <td>davon@gmail.com</td>
-                                                <td><span class="label label-danger">admin</span> </td>
-                                                <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Davon</td>
-                                                <td>davon@gmail.com</td>
-                                                <td><span class="label label-success">pm</span> </td>
-                                                <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Davon</td>
-                                                <td>davon@gmail.com</td>
-                                                <td><span class="label label-primary">writer</span> </td>
-                                                <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                            </tr>
+                                            @foreach($news as $new)
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>{{ $new->title }}</td>
+                                                    <td>{{ $new->author }}</td>
+                                                    <td><span class="label {{ $new->view < 100 ? 'label bronze' : ($new->view < 1000 ? 'label-silver' : 'label-gold')}}">35</span> </td>
+                                                    <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

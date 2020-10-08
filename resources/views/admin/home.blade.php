@@ -117,10 +117,9 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="{{ route('index') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>Tables</a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i class="fa fa-bookmark-o"></i><span class="hide-menu"></span>Blank</a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i class="fa fa-question-circle"></i><span class="hide-menu"></span>404</a></li>
+                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.index') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.all') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>Admins</a></li>
+                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.news') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>News</a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

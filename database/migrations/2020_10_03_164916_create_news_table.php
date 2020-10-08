@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
             $table->string('author');
             $table->string('cover_image');
             $table->string('slug');
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }
