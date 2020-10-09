@@ -161,10 +161,11 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($uuid)
     {
-        News::delete($id);
+        $news = News::where('uuid', $uuid)->first();
+        $news->delete($uuid);
 
-        return redirect()->route('news.index');
+        return redirect()->route('admin.news')->with('success', 'News Deleted Successfully');
     }
 }

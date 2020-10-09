@@ -20,6 +20,19 @@
     <link href="{{ asset('template/html/dist/css/style.css') }}" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="{{ asset('template/html/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
+    <style>
+        .label-bronze {
+            background: #b08d57;
+        }
+
+        .label-silver {
+            background: silver;
+        }
+
+        .label-gold {
+            background: gold;
+        }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -162,6 +175,9 @@
                 <div class="row">
                     <!-- column -->
                     <div class="col-12">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">{{ session()->get('success') }}</div>
+                        @endif
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -181,8 +197,8 @@
                                                     <td>1</td>
                                                     <td>{{ $new->title }}</td>
                                                     <td>{{ $new->author }}</td>
-                                                    <td><span class="label {{ $new->view < 100 ? 'label bronze' : ($new->view < 1000 ? 'label-silver' : 'label-gold')}}">35</span> </td>
-                                                    <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
+                                                    <td><span class="label {{ $new->views < 1 ? 'label-bronze' : ($new->views < 3 ? 'label-silver' : 'label-gold')}}">{{ $new->views }}</span> </td>
+                                                    <td><button class="btn btn-danger" onclick="window.location = '{{ route('news.delete', $new->uuid) }}'"><i class="fa fa-trash-o"></i></button></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

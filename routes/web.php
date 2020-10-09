@@ -48,6 +48,7 @@ Route::group([
 	Route::get('/{slug}', [NewsController::class, 'show'])->name('show');
 	Route::get('/update/{uuid}', [NewsController::class, 'edit'])->name('edit');
 	Route::post('/update/{uuid}', [NewsController::class, 'update'])->name('update');
+	Route::get('/delete/{uuid}', [NewsController::class, 'delete'])->name('delete');
 });
 
 // Trainee routes

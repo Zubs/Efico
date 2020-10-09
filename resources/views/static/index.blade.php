@@ -11,10 +11,10 @@
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
-<div class="splash ">
+{{-- <div class="splash ">
     <img src="https://media.giphy.com/media/lRwEh67kuL4EWx0hHs/giphy.gif" alt="" class="fade-in" width="250" height="250">
 
-</div>
+</div> --}}
 
     <div class="top__bg flex col">
         <header class="flex row">
