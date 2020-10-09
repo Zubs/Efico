@@ -11,7 +11,7 @@ class NewsController extends Controller
     // Requires authentication to view the pages
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
     
     /**
@@ -102,9 +102,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($uuid)
     {
-        $news = News::find($id);
+        $news = News::where('uuid', $uuid)->first();
 
         return view('news.edit')->with('news', $news);
     }
@@ -116,7 +116,7 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -124,7 +124,7 @@ class NewsController extends Controller
             'author' => 'required',
         ]);
 
-        $news = News::find($id);
+        $news = News::where('uuid', $uuid)->get();
 
         if ($request->has('cover_image')) {
             $this->validate($request, ['cover_image' => 'image|max:2999']);
@@ -150,7 +150,7 @@ class NewsController extends Controller
         $news->title = $request->title;
         $news->body = $request->body;
         $news->author = $request->author;
-        $news->save();
+        // $news->save();
 
         return redirect()->route('news.index');
     }

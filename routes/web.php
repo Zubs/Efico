@@ -46,8 +46,8 @@ Route::group([
 	Route::post('/', [NewsController::class, 'store'])->name('store');
 	Route::get('/new', [NewsController::class, 'create'])->name('new');
 	Route::get('/{slug}', [NewsController::class, 'show'])->name('show');
-	Route::get('/update/{id}', [NewsController::class, 'edit'])->name('edit');
-	Route::post('/update/{id}', [NewsController::class, 'update'])->name('update');
+	Route::get('/update/{uuid}', [NewsController::class, 'edit'])->name('edit');
+	Route::post('/update/{uuid}', [NewsController::class, 'update'])->name('update');
 });
 
 // Trainee routes

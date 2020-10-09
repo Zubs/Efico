@@ -1,4 +1,4 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -32,6 +32,25 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" required="" autocomplete="role">
+                                    <option value="admin">Admin</option>
+                                    <option value="writer">Writer</option>
+                                    <option value="pm">Programs Manager</option>
+                                </select>
+                                {{-- <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus> --}}
+
+                                @error('role')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -75,9 +94,9 @@
     </div>
 </div>
 @endsection
- --}}
+
 
 {{-- Users Shouldn't be able to Sign Up yet --}}
-<script>
+{{-- <script>
     window.location = '/login'
-</script>
+</script> --}}

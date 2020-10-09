@@ -37,11 +37,11 @@
             <div class="card card-deck mb-3 mx-auto" style="max-width: 90%;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="/storage/images/news/cover_images/{{ $new->cover_image }}" class="card-img" alt="...">
+                        <a href="{{ route('news.show', $new->slug) }}"><img src="/storage/images/news/cover_images/{{ $new->cover_image }}" class="card-img" alt="..."></a>
                     </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                    <h5 class="card-title">{{ $new->title }}</h5>
+                    <h5 class="card-title"><a href="{{ route('news.show', $new->slug) }}">{{ $new->title }}</a></h5>
                     <p class="card-text">{!! Str::of($new->body)->limit(50) !!}</p>
                     <a href="{{ route('news.show', $new->slug) }}" class="card-link">More</a>
                     <p class="card-text"><small class="text-muted">{{ $new->created_at }}</small></p>
