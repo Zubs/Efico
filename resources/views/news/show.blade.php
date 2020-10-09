@@ -51,6 +51,7 @@
         </div>
     </div>
     <h2 class="text-center">Comments {{ count($news->comments) }}</h2>
+    @foreach($news->comments)
     <div class="container py-4">
         <div class="card mb-3" style="max-width: 90%;">
             <div class="row no-gutters">
