@@ -51,6 +51,14 @@ Route::group([
 	Route::get('/delete/{uuid}', [NewsController::class, 'delete'])->name('delete');
 });
 
+// Comments routes
+Route::group([
+	'prefix' => '/comments',
+	'as' => 'comments.',
+], function () {
+	Route::post('/store', [NewsController::class, 'store'])->name('store');
+});
+
 // Trainee routes
 Route::group([
 	'prefix' => '/trainee',

@@ -50,6 +50,25 @@
             </div>
         </div>
     </div>
+    <h2 class="text-center">Comments {{ count($news->comments) }}</h2>
+    <div class="container py-4">
+        <div class="card mb-3" style="max-width: 90%;">
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="card-body" style="min-width: 100%;">
+                        {!! Form::open(['route' => 'comments.store', 'method' => 'POST',]) !!}
+                            {{ Form::text('name', '', $attributes = ['required' => "", 'placeholder' => "Name", 'class' => "form-control",]) }}
+                            <br>
+                            {{ Form::textarea('message', '', $attributes = ['required' => "", 'placeholder' => "Write Comment Here", 'id' => "wysiwyg", 'class' => "form-control",]) }}
+                            <br>
+                            <input type="hidden" name="id" value="{{ $news->id }}">
+                            {{ Form::submit('Post', $attributes = ['class' => "btn btn-primary form-control", 'style' => "background-color: #3c185b; border: none;",]) }}
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="container-fluid footer py-5">
         <div class="row ">
@@ -87,4 +106,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('wysiwyg');
+</script>
 </html>

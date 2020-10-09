@@ -197,7 +197,7 @@
                                                     <td>1</td>
                                                     <td>{{ $new->title }}</td>
                                                     <td>{{ $new->author }}</td>
-                                                    <td><span class="label {{ $new->views < 1 ? 'label-bronze' : ($new->views < 3 ? 'label-silver' : 'label-gold')}}">{{ $new->views }}</span> </td>
+                                                    <td><span class="label {{ $new->views < 100 ? 'label-bronze' : ($new->views < 1000 ? 'label-silver' : 'label-gold')}}">{{ $new->views }}</span> </td>
                                                     <td><button class="btn btn-danger" onclick="window.location = '{{ route('news.delete', $new->uuid) }}'"><i class="fa fa-trash-o"></i></button></td>
                                                 </tr>
                                             @endforeach
