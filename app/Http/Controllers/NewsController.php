@@ -91,7 +91,7 @@ class NewsController extends Controller
     {
         $news = News::where('slug', $slug)->first();
         $news->views += 1;
-        $news->save();
+        // $news->save();
 
         return view('news.show')->with('news', $news);
     }
