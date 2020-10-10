@@ -16,9 +16,9 @@ class NewAdmin extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($admin)
     {
-        //
+        $this->role = $admin->role;
     }
 
     /**
@@ -41,7 +41,7 @@ class NewAdmin extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->line('Dear User, you have been made a(an) '.$this->role.'by the Efico Administration')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }

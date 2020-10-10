@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\News;
+use App\Notifications\NewAdmin;
 
 class AdminController extends Controller
 {
@@ -70,6 +71,7 @@ class AdminController extends Controller
         $admin->save();
 
         // I'd be writing a mail to the admin to let them know they've been made admin, and also to make them set password;
+        $admin->notify(new NewAdmin(['role' => $admin->role]));
 
         return redirect()->route('admin.index')->with('success', 'Admin Added Successfully');
     }

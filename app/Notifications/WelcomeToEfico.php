@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewMessage extends Notification
+class WelcomeToEfico extends Notification
 {
     use Queueable;
 
@@ -16,11 +16,9 @@ class NewMessage extends Notification
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct()
     {
-        $this->name = $message['name'];
-        $this->email = $message['email'];
-        $this->message = $message['message'];
+        //
     }
 
     /**
@@ -31,16 +29,21 @@ class NewMessage extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail'];
     }
 
-    public function toDatabase()
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
     {
-        return [
-            'name' => $this->name,// To be pulled,
-            'email' => $this->email,// Would be pulled too,
-            'message' => $this->message,// As usual,
-        ];
+        return (new MailMessage)
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**

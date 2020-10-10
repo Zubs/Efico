@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Subscribers;
+use App\Notifications\WelcomeToEfico;
 
 class SubscribersController extends Controller
 {
@@ -33,6 +35,7 @@ class SubscribersController extends Controller
         $user->save();
 
         // Write Mail To Users;
+        $user->notify(new WelcomeToEfico());
         
         return back();
     }

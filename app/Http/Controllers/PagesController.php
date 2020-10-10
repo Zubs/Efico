@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Messages;
+use App\Models\User;
+use App\Notifications\NewMessage;
 
 class PagesController extends Controller
 {
@@ -70,13 +72,15 @@ class PagesController extends Controller
             'message' => 'required',
         ]);
 
-        $message = new Messages;
-        $message->name = $request->name;
-        $message->email = $request->email;
-        $message->message = $request->message;
-        $message->save();
+        $message = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ];
 
         // David should get both a notification and a mail sha, from the guest
+        $admin = User::first();
+        $admin->notify(new NewMessage($message));
 
         return view('static.thanks');
     }
