@@ -16,9 +16,9 @@ class NewTrainee extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($training_id)
     {
-        //
+        $this->training = Training::find($training_id);
     }
 
     /**

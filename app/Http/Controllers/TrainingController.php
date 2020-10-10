@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Training;
+use App\Models\Trainee;
+use App\Models\Subscribers;
 
 class TrainingController extends Controller
 {
@@ -75,7 +77,11 @@ class TrainingController extends Controller
         $training->cover_image = $final_image;
         $training->save();
 
-        // All trainees should get a mail to let them know of the new training
+        // All trainees and subscribers should get a mail to let them know of the new training
+        $trainees = Trainee::all();
+        $subscribers = Subscribers::all();
+        Notification::send($trainees, new NewTraining());
+        Notification::send($subscribers, new NewTraining());
 
         return redirect()->route('training.index');
     }

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\Training;
 
 class NewTraining extends Notification
 {
@@ -16,9 +17,9 @@ class NewTraining extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id)
     {
-        //
+        $this->training = Training::find($id)->get();
     }
 
     /**
