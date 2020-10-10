@@ -25,6 +25,7 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'submitContact'])->name('submitContact');
 Route::get('/faqs', [PagesController::class, 'faqs'])->name('faqs');
 Route::get('/services', [PagesController::class, 'services'])->name('services');
+Route::post('/subscribe', [SubscribersController::class, 'store'])->name('subscribe');
 
 // Admin routes
 Route::group([
