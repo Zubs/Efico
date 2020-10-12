@@ -8,10 +8,10 @@ use App\Models\Comments;
 class CommentsController extends Controller
 {
     // Only an authenticated admin can delete comments
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['store']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['store']);
+    // }
     /**
      * Store a newly created resource in storage.
      *
@@ -25,6 +25,8 @@ class CommentsController extends Controller
             'name' => 'string',
             'id' => 'required',
         ]);
+
+        return [$request->message, $request->name, $request->id];
 
         $comment = new Comments;
         $comment->name = $request->name ? $request->name : '';

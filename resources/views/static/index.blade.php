@@ -19,7 +19,7 @@
     <div class="top__bg flex col">
         <header class="flex row">
             <div class="logo Flex ">
-                <img src="logo.png" width="80" height="30" alt="">
+                <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1592465124/logo_iyyhfa.png" width="80" height="30" alt="">
                 <p id="your" style="font-size:9px;">...your education will make sense</p>
             </div>
             <nav id="nav" class="Flex row">
@@ -39,13 +39,13 @@
                         <a href="{{ route('contact') }}">contact us</a>
                     </li>
                     <li>
-                        <a href="./service.html">services</a>
+                        <a href="{{ route('services') }}">services</a>
                     </li>
                     <li>
                         <a href="{{ route('news.index') }}">news</a>
                     </li>
                     <li>
-                        <a href="./faqs.html">faqs</a>
+                        <a href="{{ route('faqs') }}">faqs</a>
                     </li>
                 </ul>
             </nav>
@@ -57,7 +57,7 @@
                 <button data-toggle="modal" data-target="#exampleModal">Get Started</button>
             </div>
 
-            <img src="./assets/img/startup.svg" alt="photo_illustration" class="illustration">
+            <img src="{{ asset('img/startup.svg') }}" alt="photo_illustration" class="illustration">
         </main>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -68,15 +68,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
-                    <div class="email">
-                <input type="email">
-                </div>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" style="background-color: #3c185b; border: #3c185b;">Submit</button>
-                </div>
+                <form action="{{ route('subscribe') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="email">
+                            <input type="email">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                        <button type="submit" class="btn btn-primary" style="background-color: #3c185b; border: #3c185b;">Submit</button>
+                    </div>
+                </form>
             </div>
             </div>
         </div>
@@ -187,23 +190,23 @@
         <h1>our team</h1>
         <ul class="flex row">
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                    <img src="./assets/img/david.jpg" alt="">
+                    <img src="{{ asset('img/david.jpg') }}" alt="">
                 <p class="member__name">David Adefunmilayo</p>
                 <p class="member__position">Founder and Director</p>
             </li>
 
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                    <img src="./assets/img/dami.jpg" alt="">
+                    <img src="{{ asset('img/dami.jpg') }}" alt="">
                 <p class="member__name">Damilola Adesanmi</p>
                 <p class="member__position">COO / Assistant Director</p>
             </li>
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                <img src="./assets/img/joy.jpg" alt="">
+                <img src="{{ asset('img/joy.jpg') }}" alt="">
             <p class="member__name">Joy  Emekpo</p>
             <p class="member__position">Head of Finance</p>
         </li>
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                <img src="./assets/img/onome.jpg" alt="">
+                <img src="{{ asset('img/onome.jpg') }}" alt="">
             <p class="member__name">Onome Agbi</p>
             <p class="member__position">Human Resource Manager</p>
         </li>
@@ -238,16 +241,16 @@
         <div class="row ">
             <div class="col">
                 <p><Strong>QUICK LINKS</Strong></p>
-                <a href="Abouts.html" class="text-light">About Us</a> <br>
+                <a href="{{ route('about') }}" class="text-light">About Us</a> <br>
                 <a href="#" class="text-light" data-toggle="modal" data-target="#exampleModal1">Newsletter</a>
             </div>
             <div class="col">
                 <p><Strong>SERVICES</Strong></p>
 
-                <a href="service.html" class="text-light">Career talks</a> <br>
-                <a href="service.html" class="text-light">Internship</a> <br>
-                <a href="service.html" class="text-light">Scholarship</a>
-                <a href="training/training.html" style="text-decoration: none; color: white;">Training</a>
+                <a href="{{ route('services') }}" class="text-light">Career talks</a> <br>
+                <a href="{{ route('services') }}" class="text-light">Internship</a> <br>
+                <a href="{{ route('services') }}" class="text-light">Scholarship</a>
+                <a href="{{ route('training.index') }}" style="text-decoration: none; color: white;">Training</a>
             </div>
             <div class="col">
                 <p><Strong>FOLLOW US</Strong></p>
@@ -265,7 +268,7 @@
         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </p>
         </div>
         </footer>
-    <script src="./assets/js/index.js"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
 
 </body>
 <script>

@@ -50,22 +50,23 @@
             </div>
         </div>
     </div>
-    <h2 class="text-center">Comments {{ count($news->comments) }}</h2>
-    @foreach($news->comments)
-    <div class="container py-4">
-        <div class="card mb-3" style="max-width: 90%;">
-            <div class="row no-gutters">
-                <div class="col-md-12">
-                    <div class="card-body" style="min-width: 100%;">
-                        {!! Form::open(['route' => 'comments.store', 'method' => 'POST',]) !!}
-                            {{ Form::text('name', '', $attributes = ['required' => "", 'placeholder' => "Name", 'class' => "form-control",]) }}
-                            <br>
-                            {{ Form::textarea('message', '', $attributes = ['required' => "", 'placeholder' => "Write Comment Here", 'id' => "wysiwyg", 'class' => "form-control",]) }}
-                            <br>
-                            <input type="hidden" name="id" value="{{ $news->id }}">
-                            {{ Form::submit('Post', $attributes = ['class' => "btn btn-primary form-control", 'style' => "background-color: #3c185b; border: none;",]) }}
-                        {!! Form::close() !!}
-                    </div>
+    @if(count($news->comments))
+        @foreach($news->comments as $test)
+            This is a comment
+        @endforeach
+    @endif
+    <div class="container mx-auto px-5">
+        <div class="card mb-3 mx-4 py-4">
+            <div class="row no-gutters" style="max-width: 90%;">
+                <div class="col-md-12 form">
+                    {!! Form::open(['route' => 'comments.store', 'method' => 'POST',]) !!}
+                        {{ Form::text('name', '', $attributes = ['required' => "", 'placeholder' => "Name", 'class' => "form-control",]) }}
+                        <br>
+                        {{ Form::textarea('message', '', $attributes = ['required' => "", 'placeholder' => "Write Comment Here ......", 'id' => "wysiwyg", 'class' => "form-control",]) }}
+                        <br>
+                        <input type="hidden" value="{{ $news->id }}" name="id">
+                        {{ Form::submit('Comment', $attributes = ['class' => "btn btn-primary form-control", 'style' => "background-color: #3c185b; border: none;",]) }}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\SubscribersController;
 
 /*
 |--------------------------------------------------------------------------

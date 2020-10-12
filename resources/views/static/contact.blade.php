@@ -25,9 +25,9 @@
           <a class="nav-item nav-link" href="{{ route('index') }}">HOME</a>
           <a class="nav-item nav-link" href="{{ route('about') }}">ABOUT US</a>
           <a class="nav-item nav-link active" href="{{ route('contact') }}">CONTACT US</a>
-          <a class="nav-item nav-link" href="service.html">SERVICES</a>
+          <a class="nav-item nav-link" href="{{ route('services') }}">SERVICES</a>
           <a class="nav-item nav-link" href="{{ route('news.index') }}">NEWS <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="faqs.html">FAQS</a>
+          <a class="nav-item nav-link" href="{{ route('faqs') }}">FAQS</a>
         </div>
         </ul>
     </div>
@@ -87,9 +87,9 @@
         <div class="col">
           <p><Strong>SERVICES</Strong></p>
 
-          <a href="service.html" class="text-light">Career talks</a> <br>
-          <a href="service.html" class="text-light">Internship</a> <br>
-          <a href="service.html" class="text-light">Scholarship</a>
+          <a href="{{ route('services') }}" class="text-light">Career talks</a> <br>
+          <a href="{{ route('services') }}" class="text-light">Internship</a> <br>
+          <a href="{{ route('services') }}" class="text-light">Scholarship</a>
 
       </div>
       <div class="col">
