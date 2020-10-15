@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Training;
 use App\Models\Trainee;
 use App\Models\Subscribers;
+use Illuminate\Support\Str;
 
 class TrainingController extends Controller
 {
@@ -51,6 +52,12 @@ class TrainingController extends Controller
             'cover_image' => 'image|max:2999',
         ]);
 
+        // Check if training name isn't taken, to avoid errors
+        $test = Training::where('name', $request->name)->first();
+        if ($test) {
+            return back()->with('danger', 'Training Name Is Taken');
+        }
+
         /*
             Image process here, kinda seems like it's being repeated through the app.
         */
@@ -72,6 +79,7 @@ class TrainingController extends Controller
 
         $training = new Training;
         $training->name = $request->name;
+        $training->uuid = (string) Str::uuid();
         $training->price = $request->price;
         $training->description = $request->description;
         $training->cover_image = $final_image;
@@ -80,10 +88,14 @@ class TrainingController extends Controller
         // All trainees and subscribers should get a mail to let them know of the new training
         $trainees = Trainee::all();
         $subscribers = Subscribers::all();
-        Notification::send($trainees, new NewTraining());
-        Notification::send($subscribers, new NewTraining());
+        // foreach ($trainees as $key) {
+        //     $key->notify(new NewTraining());
+        // }
+        // foreach ($subscribers as $key) {
+        //     $key->notify(new NewTraining());
+        // }
 
-        return redirect()->route('training.index');
+        return redirect()->route('trainings');
     }
 
     /**
@@ -128,10 +140,11 @@ class TrainingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($uuid)
     {
-        Training::delete($id);
+        $training = Training::where('uuid', $uuid)->first();
+        $training->delete($uuid);
 
-        return redirect()->route('training.index');
+        return redirect()->route('admin.trainings')->with('success', 'Training Deleted Successfully');
     }
 }

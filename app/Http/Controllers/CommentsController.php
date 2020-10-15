@@ -22,14 +22,12 @@ class CommentsController extends Controller
     {
         $this->validate($request, [
             'message' => 'required',
-            'name' => 'string',
+            'name' => ['string', 'required'],
             'id' => 'required',
         ]);
 
-        return [$request->message, $request->name, $request->id];
-
         $comment = new Comments;
-        $comment->name = $request->name ? $request->name : '';
+        $comment->name = $request->name;
         $comment->message = $request->message;
         $comment->news_id = $request->id;
         $comment->save();

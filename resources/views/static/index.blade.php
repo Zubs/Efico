@@ -116,10 +116,10 @@
                 </figure>
             </li>
             <li class="Flex">
-                <span>Training</span>
+                <span><a href="{{ route('trainings') }}" style="text-decoration: none; color: inherit;">Training</a></span>
                 <figure>
                     <figcaption hidden>Image illustrating Training</figcaption>
-                    <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593797574/Kids_Studying_from_Home_4_yu3dmt.gif" width="250" height="250" alt="training illustration">
+                    <a href="{{ route('trainings') }}" style="text-decoration: none; color: inherit;"><img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593797574/Kids_Studying_from_Home_4_yu3dmt.gif" width="250" height="250" alt="training illustration"></a>
                 </figure>
             </li>
             <li class="Flex">

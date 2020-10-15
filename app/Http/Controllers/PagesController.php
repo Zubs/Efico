@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Messages;
 use App\Models\User;
+use App\Models\Training;
 use App\Notifications\NewMessage;
 
 class PagesController extends Controller
@@ -37,6 +37,12 @@ class PagesController extends Controller
     public function services()
     {
         return view('static.service');
+    }
+
+    public function trainings()
+    {
+        $trainings = Training::orderBy('created_at', 'asc')->get();
+        return view('static.trainings')->with('trainings', $trainings);
     }
 
     /**

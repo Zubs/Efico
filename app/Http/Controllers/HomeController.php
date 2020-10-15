@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Training;
 use App\Models\Trainee;
-use App\Models\Messages;
 
 class HomeController extends Controller
 {
@@ -33,8 +32,7 @@ class HomeController extends Controller
         } elseif (Auth::user()->role == 'Writer') {
             return view('admin.writer');
         } else {
-            $messages = Messages::orderBy('created_at', 'desc')->simplePaginate(5);
-            return view('admin.home')->with('messages', $messages);
+            return view('admin.home');
         };
     }
 }

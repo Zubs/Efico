@@ -10,7 +10,7 @@
     <meta name="author" content="Zubair Idris Aweda">
     <!-- Favicon icon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png"> -->
-    <title>Efico | Admin</title>
+    <title>Efico | All Trainings</title>
     <!-- This page CSS -->
     <!-- chartist CSS -->
     <link href="{{ asset('template/assets/node_modules/morrisjs/morris.css') }}" rel="stylesheet">
@@ -51,7 +51,7 @@
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ route('index') }}">
+                    <a class="navbar-brand" href="{{ route('admin.index') }}">
                         <!-- Logo icon --><b>
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
@@ -130,3 +130,119 @@
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h4 class="text-themecolor">All Trainings</h4>
+                    </div>
+                    <div class="col-md-7 align-self-center text-right">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                                <li class="breadcrumb-item active">All Trainings</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success">{{ session()->get('success') }}</div>
+                        @endif
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Price</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($news as $new)
+                                                <tr>
+                                                    <td>{{ $new->name }}</td>
+                                                    <td>{{ $new->price }}</td>
+                                                    <td><button class="btn btn-danger" onclick="window.location = '{{ route('training.delete', $new->uuid) }}'"><i class="fa fa-trash-o"></i></button></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer">
+            © 2018 Elegent Admin by wrappixel.com
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('template/assets/node_modules/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="{{ asset('template/assets/node_modules/popper/popper.min.js') }}"></script>
+    <script src="{{ asset('template/assets/node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ asset('template/html/dist/js/perfect-scrollbar.jquery.min.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ asset('template/html/dist/js/waves.js') }}"></script>
+    <!--Menu sidebar -->
+    <script src="{{ asset('template/html/dist/js/sidebarmenu.js') }}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ asset('template/html/dist/js/custom.min.js') }}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="{{ asset('template/assets/node_modules/raphael/raphael-min.js') }}"></script>
+    <script src="{{ asset('template/assets/node_modules/morrisjs/morris.min.js') }}"></script>
+    <script src="{{ asset('template/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <!--c3 JavaScript -->
+    <script src="{{ asset('template/assets/node_modules/d3/d3.min.js') }}"></script>
+    <script src="{{ asset('template/assets/node_modules/c3-master/c3.min.js') }}"></script>
+    <!-- Chart JS -->
+    <script src="{{ asset('template/html/dist/js/dashboard1.js') }}"></script>
+</body>
+
+</html>

@@ -7,6 +7,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\SubscribersController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::post('/contact', [PagesController::class, 'submitContact'])->name('submitContact');
 Route::get('/faqs', [PagesController::class, 'faqs'])->name('faqs');
 Route::get('/services', [PagesController::class, 'services'])->name('services');
+Route::get('/trainings', [PagesController::class, 'trainings'])->name('trainings');
 Route::post('/subscribe', [SubscribersController::class, 'store'])->name('subscribe');
 
 // Admin routes
@@ -37,6 +39,7 @@ Route::group([
 	Route::post('/', [AdminController::class, 'store'])->name('store');
 	Route::get('/all', [AdminController::class, 'all'])->name('all');
 	Route::get('/news', [AdminController::class, 'news'])->name('news');
+	Route::get('/trainings', [AdminController::class, 'trainings'])->name('trainings');
 });
 
 // News routes
@@ -58,7 +61,7 @@ Route::group([
 	'prefix' => '/comments',
 	'as' => 'comments.',
 ], function () {
-	Route::post('/store', [NewsController::class, 'store'])->name('store');
+	Route::post('/store', [CommentsController::class, 'store'])->name('store');
 });
 
 // Trainee routes
@@ -84,6 +87,7 @@ Route::group([
 	Route::get('/{id}', [TrainingController::class, 'show'])->name('show');
 	Route::get('/update/{id}', [TrainingController::class, 'edit'])->name('edit');
 	Route::post('/update/{id}', [TrainingController::class, 'update'])->name('update');
+	Route::get('/delete/{uuid}', [TrainingController::class, 'delete'])->name('delete');
 });
 
 Auth::routes();

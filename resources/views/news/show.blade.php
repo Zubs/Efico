@@ -51,14 +51,28 @@
         </div>
     </div>
     @if(count($news->comments))
-        @foreach($news->comments as $test)
-            This is a comment
-        @endforeach
+        <div class="container py-4 mx-auto">
+            <div class="card card-deck mb-3 mx-auto" style="max-width: 90%;">
+                <div class="row no-gutters">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <h2>{{ count($news->comments) > 1 ? count($news->comments).' Comments' : count($news->comments).' Comment' }}</h2>
+                                @foreach($news->comments as $test)
+                                    {!! $test->message !!}<br><a href="#" class="card-link">{{ $test->name }}</a>
+                                    <hr>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
     <div class="container mx-auto px-5">
         <div class="card mb-3 mx-4 py-4">
-            <div class="row no-gutters" style="max-width: 90%;">
-                <div class="col-md-12 form">
+            <div class="row no-gutters justify-content-center" style="max-width: 90%;">
+                <div class="col-md-12 form" style="margin-left: 100px;">
                     {!! Form::open(['route' => 'comments.store', 'method' => 'POST',]) !!}
                         {{ Form::text('name', '', $attributes = ['required' => "", 'placeholder' => "Name", 'class' => "form-control",]) }}
                         <br>

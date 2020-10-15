@@ -95,77 +95,30 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- News -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <!-- column -->
-                <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div>
-                                    <h5 class="card-title">Sales Overview</h5>
-                                    <h6 class="card-subtitle">Check the most recent sales </h6>
+                            <h5 class="card-title">Trainings</h5>
+                            <h6 class="card-subtitle">Manage Training</h6>
+                            <div class="steamline m-t-40 row">
+                                <div class="sl-item col-6">
+                                    <div class="sl-left bd-primary">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                    <div class="sl-right">
+                                        <div class="font-medium">New Training</div>
+                                        <div class="desc"><a href="{{ route('training.new') }}" class="btn m-t-10 m-r-5 btn-rounded btn-outline-success">Create</a></div>
+                                    </div>
                                 </div>
-                                <div class="ml-auto">
-                                    <select class="custom-select b-0">
-                                        <option value="2" selected="">{{ date('M') }}</option>
-                                    </select>
+                                <div class="sl-item col-6">
+                                    <div class="sl-left bd-primary">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                    <div class="sl-right">
+                                        <div class="font-medium">All Trainings</div>
+                                        <div class="desc"><a href="{{ route('admin.trainings') }}" class="btn m-t-10 m-r-5 btn-rounded btn-outline-success">View</a></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>NAME</th>
-                                        <th>TRAINING</th>
-                                        <th>DATE</th>
-                                        <th>PRICE</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="txt-oflo">Elite admin</td>
-                                        <td class="txt-oflo">Sample Training</td>
-                                        <td class="txt-oflo">April 18, 2017</td>
-                                        <td><span class="text-success">$24</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="txt-oflo">Real Homes WP Theme</td>
-                                        <td class="txt-oflo">Sample Training</td>
-                                        <td class="txt-oflo">April 19, 2017</td>
-                                        <td><span class="text-info">$1250</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td class="txt-oflo">Ample Admin</td>
-                                        <td class="txt-oflo">Sample Training</td>
-                                        <td class="txt-oflo">April 19, 2017</td>
-                                        <td><span class="text-info">$1250</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="txt-oflo">Medical Pro WP Theme</td>
-                                        <td class="txt-oflo">Sample Training</td>
-                                        <td class="txt-oflo">April 20, 2017</td>
-                                        <td><span class="text-danger">-$24</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">5</td>
-                                        <td class="txt-oflo">Hosting press html</td>
-                                        <td class="txt-oflo">Sample Training</td>
-                                        <td class="txt-oflo">April 21, 2017</td>
-                                        <td><span class="text-success">$24</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -189,11 +142,11 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Messages ({{ Count($messages->where('read', false)) }} New)</h5>
-                            @if(Count($messages))
+                            <h5 class="card-title">Messages (5 New)</h5>
+                            @if(Auth::user()->notifications())
                                 <div class="message-box">
                                     <div class="message-widget message-scroll">
-                                        @foreach($messages as $message)
+                                        @foreach(Auth::user()->notifications() as $message)
                                             <!-- Message -->
                                             <a href="javascript:void(0)">
                                                 <div class="user-img"> <span class="round">{{ Str::of($message->name)->limit(1, '') }}</span> <span class="profile-status online pull-right"></span> </div>
@@ -201,7 +154,6 @@
                                                     <h5>{{ $message->name }}</h5> <span class="mail-desc">{!! $message->message !!}</span> <span class="time">{{ date('h:m A', strtotime($message->created_at)) }}</span> </div>
                                             </a>
                                         @endforeach
-                                        {{ $messages->links() }}
                                     </div>
                                 </div>
                             @else

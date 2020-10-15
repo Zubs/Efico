@@ -16,9 +16,9 @@ class NewAdmin extends Notification
      *
      * @return void
      */
-    public function __construct($admin)
+    public function __construct($role)
     {
-        $this->role = $admin->role;
+        $this->role = $role;
     }
 
     /**
