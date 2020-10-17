@@ -32,7 +32,8 @@ class HomeController extends Controller
         } elseif (Auth::user()->role == 'Writer') {
             return view('admin.writer');
         } else {
-            $trainings = Training::all();
+            $trainings = Training::withCount('trainee')->orderBy('trainee_count', 'DESC')->take(4)->get();
+            // return $trainings;
             return view('admin.home')->with('trainings', $trainings);
         };
     }

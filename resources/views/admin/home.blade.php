@@ -41,9 +41,23 @@
                                     <ul class="list-inline font-12">
                                         @foreach($trainings as $training)
                                             <li><i class="fa fa-circle text-info"></i> {{ $training->name }}</li>
-                                            <input type="hidden" id="test{{ $training->id }}trainees" value="{{ count($training->trainee) }}">
-                                            <input type="hidden" id="test{{ $training->id }}income" value="{{ count($training->trainee) * $training->price }}">
+                                            <input type="hidden" id="test" value="{{ count($training->trainee) * $training->price }}">
                                         @endforeach
+                                        {{-- Training Names --}}
+                                        <input type="hidden" id="n1" value="{{ $trainings[0]->name }}">
+                                        <input type="hidden" id="n2" value="{{ $trainings[1]->name }}">
+                                        <input type="hidden" id="n3" value="{{ $trainings[0]->name }}">
+                                        <input type="hidden" id="n4" value="{{ $trainings[1]->name }}">
+                                        {{-- Training Trainees --}}
+                                        <input type="hidden" id="t1" value="{{ $trainings[0]->trainee_count }}">
+                                        <input type="hidden" id="t2" value="{{ $trainings[1]->trainee_count }}">
+                                        <input type="hidden" id="t3" value="{{ $trainings[0]->trainee_count }}">
+                                        <input type="hidden" id="t4" value="{{ $trainings[1]->trainee_count }}">
+                                        {{-- Trainee Income --}}
+                                        <input type="hidden" id="i1" value="{{ $trainings[0]->price * $trainings[0]->trainee_count / 1000 }}">
+                                        <input type="hidden" id="i2" value="{{ $trainings[1]->price * $trainings[1]->trainee_count / 1000  }}">
+                                        <input type="hidden" id="i3" value="{{ $trainings[0]->price * $trainings[0]->trainee_count / 1000 }}">
+                                        <input type="hidden" id="i4" value="{{ $trainings[1]->price * $trainings[1]->trainee_count / 1000 }}">
                                     </ul>
                                 </div>
                             </div>
@@ -52,20 +66,13 @@
                         <div class="card-body bg-light">
                             <div class="row text-center m-b-20">
                                 <div class="col-lg-4 col-md-4 m-t-20">
-                                    <h2 class="m-b-0 font-light">6000</h2><span class="text-muted">Total sale</span>
+                                    <h2 class="m-b-0 font-light">{{ $trainings[0]->trainee_count + $trainings[1]->trainee_count + $trainings[0]->trainee_count + $trainings[1]->trainee_count }}+</h2><span class="text-muted">Total sale</span>
                                 </div>
-                                <div class="col-lg-2 col-md-2 m-t-20">
-                                    <h2 class="m-b-0 font-light">4000</h2><span class="text-muted">Iphone</span>
-                                </div>
-                                <div class="col-lg-2 col-md-2 m-t-20">
-                                    <h2 class="m-b-0 font-light">2000</h2><span class="text-muted">Ipad</span>
-                                </div>
-                                <div class="col-lg-2 col-md-2 m-t-20">
-                                    <h2 class="m-b-0 font-light">4000</h2><span class="text-muted">Iphone</span>
-                                </div>
-                                <div class="col-lg-2 col-md-2 m-t-20">
-                                    <h2 class="m-b-0 font-light">2000</h2><span class="text-muted">Ipad</span>
-                                </div>
+                                @foreach($trainings as $training)
+                                    <div class="col-lg-2 col-md-2 m-t-20">
+                                        <h2 class="m-b-0 font-light">{{ $training->trainee_count }}</h2><span class="text-muted">{{ $training->name }}</span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
