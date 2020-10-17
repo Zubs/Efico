@@ -36,11 +36,14 @@
                     <div class="card oh">
                         <div class="card-body">
                             <div class="d-flex m-b-30 align-items-center no-block">
-                                <h5 class="card-title ">Trainings Report</h5>
+                                <h5 class="card-title ">Trainings Report (Top 5 trainings)</h5>
                                 <div class="ml-auto">
                                     <ul class="list-inline font-12">
-                                        <li><i class="fa fa-circle text-info"></i> Iphone</li>
-                                        <li><i class="fa fa-circle text-primary"></i> Ipad</li>
+                                        @foreach($trainings as $training)
+                                            <li><i class="fa fa-circle text-info"></i> {{ $training->name }}</li>
+                                            <input type="hidden" id="test{{ $training->id }}trainees" value="{{ count($training->trainee) }}">
+                                            <input type="hidden" id="test{{ $training->id }}income" value="{{ count($training->trainee) * $training->price }}">
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -51,10 +54,16 @@
                                 <div class="col-lg-4 col-md-4 m-t-20">
                                     <h2 class="m-b-0 font-light">6000</h2><span class="text-muted">Total sale</span>
                                 </div>
-                                <div class="col-lg-4 col-md-4 m-t-20">
+                                <div class="col-lg-2 col-md-2 m-t-20">
                                     <h2 class="m-b-0 font-light">4000</h2><span class="text-muted">Iphone</span>
                                 </div>
-                                <div class="col-lg-4 col-md-4 m-t-20">
+                                <div class="col-lg-2 col-md-2 m-t-20">
+                                    <h2 class="m-b-0 font-light">2000</h2><span class="text-muted">Ipad</span>
+                                </div>
+                                <div class="col-lg-2 col-md-2 m-t-20">
+                                    <h2 class="m-b-0 font-light">4000</h2><span class="text-muted">Iphone</span>
+                                </div>
+                                <div class="col-lg-2 col-md-2 m-t-20">
                                     <h2 class="m-b-0 font-light">2000</h2><span class="text-muted">Ipad</span>
                                 </div>
                             </div>

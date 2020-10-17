@@ -40,6 +40,7 @@ Route::group([
 	Route::get('/all', [AdminController::class, 'all'])->name('all');
 	Route::get('/news', [AdminController::class, 'news'])->name('news');
 	Route::get('/trainings', [AdminController::class, 'trainings'])->name('trainings');
+	Route::get('/trainees', [AdminController::class, 'trainees'])->name('trainees');
 });
 
 // News routes

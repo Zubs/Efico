@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\News;
 use App\Models\Training;
+use App\Models\Trainee;
 use App\Notifications\NewAdmin;
 
 class AdminController extends Controller
@@ -47,6 +48,12 @@ class AdminController extends Controller
     {
         $news = Training::all();
         return view('admin.trainings')->with('news', $news);
+    }
+
+    public function trainees()
+    {
+        $news = Trainee::all();
+        return view('admin.trainees')->with('news', $news);
     }
 
     /**

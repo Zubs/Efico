@@ -20,6 +20,19 @@
     <link href="{{ asset('template/html/dist/css/style.css') }}" rel="stylesheet">
     <!-- Dashboard 1 Page CSS -->
     <link href="{{ asset('template/html/dist/css/pages/dashboard1.css') }}" rel="stylesheet">
+    <style>
+        .label-bronze {
+            background: #b08d57;
+        }
+
+        .label-silver {
+            background: silver;
+        }
+
+        .label-gold {
+            background: gold;
+        }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -121,6 +134,7 @@
                         <li> <a class="waves-effect waves-dark" href="{{ route('admin.all') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>Admins</a></li>
                         <li> <a class="waves-effect waves-dark" href="{{ route('admin.news') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>News</a></li>
                         <li> <a class="waves-effect waves-dark" href="{{ route('admin.trainings') }}" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu"></span>Trainings</a></li>
+                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.trainees') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu"></span>Trainees</a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

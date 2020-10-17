@@ -1,55 +1,41 @@
 $(function() {
     "use strict";
     // Dashboard 1 Morris-chart
-    Morris.Area({
+    Morris.Bar({
         element: 'morris-area-chart',
-        data: [{
-            period: '2010',
-            iphone: 0,
-            ipad: 0,
-            itouch: 0
+        data: [
+        {
+            name: 'A',
+            trainees: document.getElementById('test3trainees').value,
+            income: document.getElementById('test3income').value,
         }, {
-            period: '2011',
-            iphone: 130,
-            ipad: 100,
-            itouch: 80
+            name: 'B',
+            trainees: 130,
+            income: 100,
         }, {
-            period: '2012',
-            iphone: 80,
-            ipad: 60,
-            itouch: 70
+            name: 'C',
+            trainees: 80,
+            income: 60,
         }, {
-            period: '2013',
-            iphone: 70,
-            ipad: 200,
-            itouch: 140
+            name: 'D',
+            trainees: 70,
+            income: 200,
         }, {
-            period: '2014',
-            iphone: 180,
-            ipad: 150,
-            itouch: 140
-        }, {
-            period: '2015',
-            iphone: 105,
-            ipad: 100,
-            itouch: 80
-        }, {
-            period: '2016',
-            iphone: 250,
-            ipad: 150,
-            itouch: 200
+            name: 'E',
+            trainees: 180,
+            income: 150,
         }],
-        xkey: 'period',
-        ykeys: ['iphone', 'ipad'],
-        labels: ['iPhone', 'iPad'],
+        xkey: 'name',
+        ykeys: ['trainees', 'income'],
+        labels: ['trainees', 'income'],
         pointSize: 0,
         fillOpacity: 0,
-        pointStrokeColors: ['#f62d51', '#7460ee', '#009efb'],
+        pointStrokeColors: ['#f2f2f2', '#f2f2f2', '#009efb'],
         behaveLikeLine: true,
         gridLineColor: '#f6f6f6',
         lineWidth: 1,
         hideHover: 'auto',
-        lineColors: ['#009efb', '#7460ee', '#009efb'],
+        lineColors: ['red', 'red', 'red'],
         resize: true
     });
 

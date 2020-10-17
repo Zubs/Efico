@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trainee;
+use App\Models\Training;
 
 class TraineeController extends Controller
 {
@@ -32,7 +33,8 @@ class TraineeController extends Controller
      */
     public function register()
     {
-        return view('trainee.register');
+        $trainings = Training::all();
+        return view('trainee.register')->with('trainings', $trainings);
     }
 
     /**
@@ -78,7 +80,7 @@ class TraineeController extends Controller
      */
     public function postRegister(Request $request)
     {
-        return [$request->name, $request->email, $request->training_id];
+        // return [$request->name, $request->email, $request->training_id];
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
@@ -93,7 +95,7 @@ class TraineeController extends Controller
 
         // The trainee should get a mail of successful registration with link to set password
 
-        return redirect()->route('trainee.index');
+        return redirect()->route('admin.trainees');
     }
 
     /**

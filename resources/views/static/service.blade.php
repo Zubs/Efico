@@ -73,7 +73,7 @@
             <br>
             <br>
             <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-4" onclick="window.location = '{{ route('trainings') }}'">
             <div class="content2">
             <div class="hove segment3 mx-auto">
             <img src="{{ asset('img/Ellipse.png') }}" style="width: 10%; margin-top: 3%;">

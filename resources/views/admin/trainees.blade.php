@@ -14,13 +14,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h4 class="text-themecolor">Staff List</h4>
+                    <h4 class="text-themecolor">All Trainees</h4>
                 </div>
                 <div class="col-md-7 align-self-center text-right">
                     <div class="d-flex justify-content-end align-items-center">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Staff List</li>
+                            <li class="breadcrumb-item active">All Trainees</li>
                         </ol>
                     </div>
                 </div>
@@ -34,41 +34,28 @@
             <div class="row">
                 <!-- column -->
                 <div class="col-12">
+                    @if(session()->has('success'))
+                        <div class="alert alert-success">{{ session()->get('success') }}</div>
+                    @endif
                     <div class="card">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th>Remove</th>
+                                            <th>Email Address</th>
+                                            <th>Training Name</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Davon</td>
-                                            <td>davon@gmail.com</td>
-                                            <td><span class="label label-danger">admin</span> </td>
-                                            <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Davon</td>
-                                            <td>davon@gmail.com</td>
-                                            <td><span class="label label-success">pm</span> </td>
-                                            <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Davon</td>
-                                            <td>davon@gmail.com</td>
-                                            <td><span class="label label-primary">writer</span> </td>
-                                            <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                        </tr>
+                                        @foreach($news as $new)
+                                            <tr>
+                                                <td>{{ $new->name }}</td>
+                                                <td>{{ $new->email }}</td>
+                                                <td>{{ $new->training->name }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

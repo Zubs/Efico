@@ -71,7 +71,9 @@
                             <div class="field flex col">
                                 <select name="training_id" id="training" required="">
                                     <option value="">Training</option>
-                                    <option value="5">First Training - N40,000</option>
+                                    @foreach($trainings as $training)
+                                        <option value="{{ $training->id }}">{{ $training->name }} - {{ $training->price }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button>Register</button>
