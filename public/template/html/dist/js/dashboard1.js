@@ -23,7 +23,7 @@ $(function() {
         }],
         xkey: 'name',
         ykeys: ['trainees', 'income'],
-        labels: ['Trainees', 'Income'],
+        labels: ['Trainees', 'Income (000)'],
         pointSize: 0,
         fillOpacity: 0,
         pointStrokeColors: ['#f2f2f2', '#f2f2f2', '#009efb'],

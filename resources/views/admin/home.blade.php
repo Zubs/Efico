@@ -41,7 +41,6 @@
                                     <ul class="list-inline font-12">
                                         @foreach($trainings as $training)
                                             <li><i class="fa fa-circle text-info"></i> {{ $training->name }}</li>
-                                            <input type="hidden" id="test" value="{{ count($training->trainee) * $training->price }}">
                                         @endforeach
                                         {{-- Training Names --}}
                                         <input type="hidden" id="n1" value="{{ $trainings[0]->name }}">
