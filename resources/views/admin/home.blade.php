@@ -157,16 +157,16 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Messages (5 New)</h5>
+                            <h5 class="card-title">Messages ({{ count(Auth::user()->unreadNotifications) }} New)</h5>
                             @if(Auth::user()->notifications())
                                 <div class="message-box">
                                     <div class="message-widget message-scroll">
-                                        @foreach(Auth::user()->notifications() as $message)
+                                        @foreach(Auth::user()->unreadNotifications as $message)
                                             <!-- Message -->
                                             <a href="javascript:void(0)">
-                                                <div class="user-img"> <span class="round">{{ Str::of($message->name)->limit(1, '') }}</span> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="user-img"> <span class="round">{{ Str::of($message->data['name'])->limit(1, '') }}</span> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
-                                                    <h5>{{ $message->name }}</h5> <span class="mail-desc">{!! $message->message !!}</span> <span class="time">{{ date('h:m A', strtotime($message->created_at)) }}</span> </div>
+                                                    <h5>{{ $message->data['name'] }}</h5> <span class="mail-desc">{!! $message->data['message'] !!}</span> <span class="time">{{ date('h:m A', strtotime($message->created_at)) }}</span> </div>
                                             </a>
                                         @endforeach
                                     </div>

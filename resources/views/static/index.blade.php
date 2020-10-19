@@ -72,7 +72,7 @@
                     @csrf
                     <div class="modal-body">
                         <div class="email">
-                            <input type="email">
+                            <input type="email" name="email">
                         </div>
                     </div>
                     <div class="modal-footer">

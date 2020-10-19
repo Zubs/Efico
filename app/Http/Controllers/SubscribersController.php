@@ -35,8 +35,10 @@ class SubscribersController extends Controller
         $user->save();
 
         // // Write Mail To Users;
-        // $user->notify(new WelcomeToEfico());
+        if($user->notify(new WelcomeToEfico())) {
+            return back();
+        }
         
-        return back();
+        return $user->email;
     }
 }
