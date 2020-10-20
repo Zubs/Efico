@@ -163,6 +163,7 @@
                                     <div class="message-widget message-scroll">
                                         @foreach(Auth::user()->unreadNotifications as $message)
                                             <!-- Message -->
+                                            {{ $message->markAsRead() }}
                                             <a href="javascript:void(0)">
                                                 <div class="user-img"> <span class="round">{{ Str::of($message->data['name'])->limit(1, '') }}</span> <span class="profile-status online pull-right"></span> </div>
                                                 <div class="mail-contnet">
