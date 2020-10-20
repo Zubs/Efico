@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\User;
 use App\Models\News;
 use App\Models\Training;
 use App\Models\Trainee;
@@ -34,7 +35,7 @@ class AdminController extends Controller
      */
     public function all()
     {
-        $admins = Admin::all();
+        $admins = User::all();
         return view('admin.index')->with('admins', $admins);
     }
 
@@ -80,6 +81,7 @@ class AdminController extends Controller
         ]);
 
         $admin = new Admin;
+        $admin->uuid = (string) Str::uuid();
         $admin->email = $request->email;
         $admin->role = $request->role;
         $admin->save();
@@ -97,10 +99,9 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        // The admin should get a mail to know they've been removed as admin, with a reason
-        
-        Admin::delete($id);
+    {   
+        $admin = Admin::find($id);
+        $admin->delete();
 
         return redirect('admin.index')->with('success', 'Admin Removed Successfully');
     }

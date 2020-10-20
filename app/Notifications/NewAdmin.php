@@ -16,9 +16,10 @@ class NewAdmin extends Notification
      *
      * @return void
      */
-    public function __construct($role)
+    public function __construct($role, $uuid)
     {
         $this->role = $role;
+        $this->uuid = $uuid;
     }
 
     /**
@@ -40,10 +41,10 @@ class NewAdmin extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('Dear User, you have been made a(an) '.$this->role.'by the Efico Administration')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+        return (new MailMessage)->view('mail.new-admin')->with([
+            'role' => $this->role,
+            'uuid' => $this->uuid,
+        ]);
     }
 
     /**

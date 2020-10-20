@@ -40,7 +40,6 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Role</th>
@@ -48,27 +47,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Davon</td>
-                                            <td>davon@gmail.com</td>
-                                            <td><span class="label label-danger">admin</span> </td>
-                                            <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Davon</td>
-                                            <td>davon@gmail.com</td>
-                                            <td><span class="label label-success">pm</span> </td>
-                                            <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Davon</td>
-                                            <td>davon@gmail.com</td>
-                                            <td><span class="label label-primary">writer</span> </td>
-                                            <td><button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></td>
-                                        </tr>
+                                        @foreach($admins as $admin)
+                                            <tr>
+                                                <td>{{ $admin->name }}</td>
+                                                <td>{{ $admin->email }}</td>
+                                                <td><span class="label label-danger">{{ $admin->role }}</span> </td>
+                                                <td><button class="btn btn-danger" onclick="window.location ='{{ route('admin.delete', $admin->id) }}'"><i class="fa fa-trash-o"></i></button></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

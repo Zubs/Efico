@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -98,4 +98,61 @@
 <script>
   CKEDITOR.replace('wysiwyg');
 </script>
-</html>
+</html> --}}
+
+@extends('layouts.admin')
+
+@section('content')
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h4 class="text-themecolor">Edit News</h4>
+                </div>
+                <div class="col-md-7 align-self-center text-right">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.news') }}">News</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            {!! Form::open(['url' => '/news/update/'.$news->uuid, 'method' => 'POST', 'files' => 'true',]) !!}
+                {{ Form::text('title', $news->title, $attributes = ['required' => "", 'placeholder' => "Title", 'class' => "form-control",]) }}
+                <br><br>
+                {{ Form::textarea('body', $news->body, $attributes = ['required' => "", 'placeholder' => "Write Article Here", 'id' => "wysiwyg", 'class' => "form-control",]) }}
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ Form::text('author', $news->author, $attributes = ['required' => "", 'placeholder' => "Author", 'class' => "form-control",]) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ Form::file('cover_image', $attributes = ['class' => "form-control",]) }}
+                    </div>
+                </div>
+                <br>
+                {{ Form::submit('Post', $attributes = ['class' => "btn btn-primary form-control text-white", 'style' => "background-color: #3c185b; border: none;",]) }}
+            {!! Form::close() !!}
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+@endsection

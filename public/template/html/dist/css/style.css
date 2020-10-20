@@ -11943,7 +11943,7 @@ File: scss
         margin: 1px 0;
         -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
-        overflow: hidden;
+        overflow: all;
         color: #adb5bd;
         white-space: nowrap; }
       .message-box .message-widget a .mail-contnet .time {

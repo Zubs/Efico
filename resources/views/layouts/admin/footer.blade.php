@@ -38,6 +38,10 @@
     <script src="{{ asset('template/assets/node_modules/c3-master/c3.min.js') }}"></script>
     <!-- Chart JS -->
     <script src="{{ asset('template/html/dist/js/dashboard1.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace('wysiwyg');
+    </script>
 </body>
 
 </html>

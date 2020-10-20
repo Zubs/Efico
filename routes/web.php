@@ -41,6 +41,7 @@ Route::group([
 	Route::get('/news', [AdminController::class, 'news'])->name('news');
 	Route::get('/trainings', [AdminController::class, 'trainings'])->name('trainings');
 	Route::get('/trainees', [AdminController::class, 'trainees'])->name('trainees');
+	Route::get('/delete/{uuid}', [AdminController::class, 'delete'])->name('delete');
 });
 
 // News routes

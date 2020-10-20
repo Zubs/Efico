@@ -148,10 +148,10 @@ class NewsController extends Controller
             $news->cover_image = $final_image;
         };
 
-        $news->title = $request->title;
-        $news->body = $request->body;
-        $news->author = $request->author;
-        // $news->save();
+        $news[0]->title = $request->title;
+        $news[0]->body = $request->body;
+        $news[0]->author = $request->author;
+        $news[0]->save();
 
         return redirect()->route('news.index');
     }

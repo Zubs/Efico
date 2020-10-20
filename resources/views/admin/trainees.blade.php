@@ -49,13 +49,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($news as $new)
-                                            <tr>
-                                                <td>{{ $new->name }}</td>
-                                                <td>{{ $new->email }}</td>
-                                                <td>{{ $new->training->name }}</td>
-                                            </tr>
-                                        @endforeach
+                                        @if(count($news) > 0)
+                                            @foreach($news as $new)
+                                                <tr>
+                                                    <td>{{ $new->name }}</td>
+                                                    <td>{{ $new->email }}</td>
+                                                    <td>{{ $new->training() }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

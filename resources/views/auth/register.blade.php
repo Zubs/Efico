@@ -48,7 +48,7 @@
                                     <option value="writer">Writer</option>
                                     <option value="pm">Programs Manager</option>
                                 </select>
-                                {{-- <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus> --}}
+                                {{-- <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
@@ -93,10 +93,10 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
 
 
 {{-- Users Shouldn't be able to Sign Up yet --}}
-{{-- <script>
+<script>
     window.location = '/login'
-</script> --}}
+</script>

@@ -43,20 +43,20 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Title</th>
                                             <th>Author</th>
                                             <th>Views</th>
+                                            <th>Edit</th>
                                             <th>Remove</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($news as $new)
                                             <tr>
-                                                <td>1</td>
                                                 <td>{{ $new->title }}</td>
                                                 <td>{{ $new->author }}</td>
                                                 <td><span class="label {{ $new->views < 100 ? 'label-bronze' : ($new->views < 1000 ? 'label-silver' : 'label-gold')}}"><h5>{{ $new->views }}</h5></span> </td>
+                                                <td><button class="btn btn-warning" onclick="window.location = '{{ route('news.edit', $new->uuid) }}'"><i class="fa fa-edit"></i></button></td>
                                                 <td><button class="btn btn-danger" onclick="window.location = '{{ route('news.delete', $new->uuid) }}'"><i class="fa fa-trash-o"></i></button></td>
                                             </tr>
                                         @endforeach

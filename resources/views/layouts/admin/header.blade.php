@@ -129,13 +129,29 @@
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.index') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.all') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>Admins</a></li>
-                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.news') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>News</a></li>
-                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.trainings') }}" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu"></span>Trainings</a></li>
-                        <li> <a class="waves-effect waves-dark" href="{{ route('admin.trainees') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu"></span>Trainees</a></li>
-                    </ul>
+                    @if(Auth::user()->role == 'admin')
+                        <ul id="sidebarnav">
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.index') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.all') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>Admins</a></li>
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.news') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>News</a></li>
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.trainings') }}" aria-expanded="false"><i class="fa fa-book"></i><span class="hide-menu"></span>Trainings</a></li>
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.trainees') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu"></span>Trainees</a></li>
+                        </ul>
+                    @elseif(Auth::user()->role == 'writer')
+                        <ul id="sidebarnav">
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.index') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a></li>
+                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.news') }}" aria-expanded="false"><i class="fa fa-table"></i><span class="hide-menu"></span>News</a></li>
+                        </ul>
+                    @endif
+                    <div class="text-center my-5">
+                        <button class="btn btn-primary text-center" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out"></i> Log Out
+                        </button>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>

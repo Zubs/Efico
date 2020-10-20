@@ -22,7 +22,7 @@ class CommentsController extends Controller
     {
         $this->validate($request, [
             'message' => 'required',
-            'name' => ['string', 'required'],
+            'name' => 'required',
             'id' => 'required',
         ]);
 
