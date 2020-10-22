@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Messages;
+use App\Models\User;
+use App\Models\Training;
+use App\Notifications\NewMessage;
 
 class PagesController extends Controller
 {
@@ -15,6 +17,32 @@ class PagesController extends Controller
     public function index()
     {
         return view('static.index');
+    }
+
+    /**
+     * Displays the faqs page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function faqs()
+    {
+        return view('static.faq');
+    }
+
+    /**
+     * Displays the services page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function services()
+    {
+        return view('static.service');
+    }
+
+    public function trainings()
+    {
+        $trainings = Training::orderBy('created_at', 'asc')->get();
+        return view('static.trainings')->with('trainings', $trainings);
     }
 
     /**
@@ -42,74 +70,24 @@ class PagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function submitContact()
+    public function submitContact(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+
+        $message = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ];
+
+        // David should get both a notification and a mail sha, from the guest
+        $admin = User::first();
+        $admin->notify(new NewMessage($message));
+
         return view('static.thanks');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

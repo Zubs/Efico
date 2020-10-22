@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../resources/css/contact.css">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Contact</title>
 </head>
@@ -13,7 +13,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark z-depth-0" style="background-color: #3c185b; width: 100%; margin-left: 0; color: white;" >
     <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('index') }}">
     <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1592465124/logo_iyyhfa.png" width="60" height="20" alt="" loading="lazy">
     </a>
     <button class="navbar-toggler but" style="color: white;" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,12 +22,12 @@
     <div class="collapse navbar-collapse up"  id="navbarSupportedContent" >
       <ul class="navbar-nav ml-auto">
       <div class="navbar-nav" >
-          <a class="nav-item nav-link" href="index.html">HOME</a>
-          <a class="nav-item nav-link" href="Abouts.html">ABOUT US</a>
-          <a class="nav-item nav-link active" href="contact.html">CONTACT US</a>
-          <a class="nav-item nav-link" href="service.html">SERVICES</a>
-          <a class="nav-item nav-link" href="news.html">NEWS <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="faqs.html">FAQS</a>
+          <a class="nav-item nav-link" href="{{ route('index') }}">HOME</a>
+          <a class="nav-item nav-link" href="{{ route('about') }}">ABOUT US</a>
+          <a class="nav-item nav-link active" href="{{ route('contact') }}">CONTACT US</a>
+          <a class="nav-item nav-link" href="{{ route('services') }}">SERVICES</a>
+          <a class="nav-item nav-link" href="{{ route('news.index') }}">NEWS <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="{{ route('faqs') }}">FAQS</a>
         </div>
         </ul>
     </div>
@@ -53,18 +53,15 @@
   <div class="container mx-auto">
   <p class="note"><b>SEND US A MESSAGE</b></p>
     <div class="form mx-auto">
-    <input type="text"  placeholder="Name" required/>
-    <br>
-    <br>
-
-    <input type="email" placeholder="Email" required/>
-    <br>
-    <br>
-
-    <input class="message" type="text" placeholder="Message" required/>
-    <br>
-    <br>
-    <button class="btn btn-primary" style="background-color: #3c185b; border: none;" type="button" >Contact Us</button>
+      {!! Form::open(['route' => 'submitContact', 'method' => 'POST']) !!}
+        {{ Form::text('name', '', $attributes = ['required' => "", 'placeholder' => "Name", 'class' => "form-control",]) }}
+        <br>
+        {{ Form::email('email', '', $attributes = ['required' => "", 'placeholder' => "Email", 'class' => "form-control",]) }}
+        <br>
+        {{ Form::textarea('message', '', $attributes = ['required' => "", 'placeholder' => "Message", 'id' => "wysiwyg", 'class' => "form-control",]) }}
+        <br>
+        {{ Form::submit('Contact Us', $attributes = ['class' => "btn btn-primary form-control", 'style' => "background-color: #3c185b; border: none;",]) }}
+      {!! Form::close() !!}
     </div>
   </div>
   <br>
@@ -84,15 +81,15 @@
     <div class="row ">
         <div class="col">
             <p><Strong>QUICK LINKS</Strong></p>
-            <a href="Abouts.html" class="text-light">About Us</a> <br>
+            <a href="{{ route('about') }}" class="text-light">About Us</a> <br>
             <a href="#" class="text-light" data-toggle="modal" data-target="#exampleModal1">Newsletter</a>
         </div>
         <div class="col">
           <p><Strong>SERVICES</Strong></p>
 
-          <a href="service.html" class="text-light">Career talks</a> <br>
-          <a href="service.html" class="text-light">Internship</a> <br>
-          <a href="service.html" class="text-light">Scholarship</a>
+          <a href="{{ route('services') }}" class="text-light">Career talks</a> <br>
+          <a href="{{ route('services') }}" class="text-light">Internship</a> <br>
+          <a href="{{ route('services') }}" class="text-light">Scholarship</a>
 
       </div>
       <div class="col">
@@ -116,5 +113,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
+<script>
+  CKEDITOR.replace('wysiwyg');
+</script>
 </body>
 </html>

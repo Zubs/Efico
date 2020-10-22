@@ -1,0 +1,14 @@
+1. Salawa Abeni - Experience
+2. Kollingtion - Oshi oda ma she wa mi wa ile wa
+3. Kollington - Aomo omo ti o si ni
+4. 
+
+
+
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=a9f4a84a356bd8
+MAIL_PASSWORD=a65dbf879d59fb
+MAIL_ENCRYPTION=tls

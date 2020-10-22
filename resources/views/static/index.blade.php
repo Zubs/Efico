@@ -7,19 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Efico</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/index.css">
-<script src="assets/js/script.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
+<<<<<<< HEAD
 <!-- <div class="splash ">
     <img src="https://media.giphy.com/media/lRwEh67kuL4EWx0hHs/giphy.gif" alt="" class="fade-in" width="250" height="250">
 
 </div> -->
+=======
+{{-- <div class="splash ">
+    <img src="https://media.giphy.com/media/lRwEh67kuL4EWx0hHs/giphy.gif" alt="" class="fade-in" width="250" height="250">
+
+</div> --}}
+>>>>>>> upstream/main
 
     <div class="top__bg flex col">
         <header class="flex row">
             <div class="logo Flex ">
-                <img src="logo.png" width="80" height="30" alt="">
+                <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1592465124/logo_iyyhfa.png" width="80" height="30" alt="">
                 <p id="your" style="font-size:9px;">...your education will make sense</p>
             </div>
             <nav id="nav" class="Flex row">
@@ -30,22 +37,22 @@
                 </div>
                 <ul class="flex row">
                     <li>
-                        <a href="#">home</a>
+                        <a href="{{ route('index') }}">home</a>
                     </li>
                     <li>
-                        <a href="./Abouts.html">about</a>
+                        <a href="{{ route('about') }}">about</a>
                     </li>
                     <li>
-                        <a href="./contact.html">contact us</a>
+                        <a href="{{ route('contact') }}">contact us</a>
                     </li>
                     <li>
-                        <a href="./service.html">services</a>
+                        <a href="{{ route('services') }}">services</a>
                     </li>
                     <li>
-                        <a href="./news.html">news</a>
+                        <a href="{{ route('news.index') }}">news</a>
                     </li>
                     <li>
-                        <a href="./faqs.html">faqs</a>
+                        <a href="{{ route('faqs') }}">faqs</a>
                     </li>
                 </ul>
             </nav>
@@ -57,7 +64,7 @@
                 <button data-toggle="modal" data-target="#exampleModal">Get Started</button>
             </div>
 
-            <img src="./assets/img/startup.svg" alt="photo_illustration" class="illustration">
+            <img src="{{ asset('img/startup.svg') }}" alt="photo_illustration" class="illustration">
         </main>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -68,15 +75,18 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
-                    <div class="email">
-                <input type="email">
-                </div>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" style="background-color: #3c185b; border: #3c185b;">Submit</button>
-                </div>
+                <form action="{{ route('subscribe') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="email">
+                            <input type="email" name="email">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                        <button type="submit" class="btn btn-primary" style="background-color: #3c185b; border: #3c185b;">Submit</button>
+                    </div>
+                </form>
             </div>
             </div>
         </div>
@@ -115,10 +125,14 @@
                 <span> <p>The personalitized self-assessment tests and soft skills training are delivered by our trained, competent campus ambassadors in each universities we are present. </p> </span>
             </li>
             <li class="Flex">
+<<<<<<< HEAD
 
+=======
+                <span><a href="{{ route('trainings') }}" style="text-decoration: none; color: inherit;">Training</a></span>
+>>>>>>> upstream/main
                 <figure>
                     <figcaption hidden>Image illustrating Training</figcaption>
-                    <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593797574/Kids_Studying_from_Home_4_yu3dmt.gif" width="250" height="250" alt="training illustration">
+                    <a href="{{ route('trainings') }}" style="text-decoration: none; color: inherit;"><img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593797574/Kids_Studying_from_Home_4_yu3dmt.gif" width="250" height="250" alt="training illustration"></a>
                 </figure>
                 <span>Training</span>
                 <span> <p>Technical training are delivered on the central management level and undergraduates choose to apply for these subsidized training according to what they have found out about themselves.
@@ -195,23 +209,23 @@
         <h1>our team</h1>
         <ul class="flex row">
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                    <img src="./assets/img/david.jpg" alt="">
+                    <img src="{{ asset('img/david.jpg') }}" alt="">
                 <p class="member__name">David Adefunmilayo</p>
                 <p class="member__position">Founder and Director</p>
             </li>
 
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                    <img src="./assets/img/dami.jpg" alt="">
+                    <img src="{{ asset('img/dami.jpg') }}" alt="">
                 <p class="member__name">Damilola Adesanmi</p>
                 <p class="member__position">COO / Assistant Director</p>
             </li>
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                <img src="./assets/img/joy.jpg" alt="">
+                <img src="{{ asset('img/joy.jpg') }}" alt="">
             <p class="member__name">Joy  Emekpo</p>
             <p class="member__position">Head of Finance</p>
         </li>
             <li class="Flex col-sm-12 col-lg-3 text-center">
-                <img src="./assets/img/onome.jpg" alt="">
+                <img src="{{ asset('img/onome.jpg') }}" alt="">
             <p class="member__name">Onome Agbi</p>
             <p class="member__position">Human Resource Manager</p>
         </li>
@@ -246,16 +260,16 @@
         <div class="row ">
             <div class="col">
                 <p><Strong>QUICK LINKS</Strong></p>
-                <a href="Abouts.html" class="text-light">About Us</a> <br>
+                <a href="{{ route('about') }}" class="text-light">About Us</a> <br>
                 <a href="#" class="text-light" data-toggle="modal" data-target="#exampleModal1">Newsletter</a>
             </div>
             <div class="col">
                 <p><Strong>SERVICES</Strong></p>
 
-                <a href="service.html" class="text-light">Career talks</a> <br>
-                <a href="service.html" class="text-light">Internship</a> <br>
-                <a href="service.html" class="text-light">Scholarship</a>
-                <a href="training/training.html" style="text-decoration: none; color: white;">Training</a>
+                <a href="{{ route('services') }}" class="text-light">Career talks</a> <br>
+                <a href="{{ route('services') }}" class="text-light">Internship</a> <br>
+                <a href="{{ route('services') }}" class="text-light">Scholarship</a>
+                <a href="{{ route('training.index') }}" style="text-decoration: none; color: white;">Training</a>
             </div>
             <div class="col">
                 <p><Strong>FOLLOW US</Strong></p>
@@ -273,7 +287,7 @@
         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </p>
         </div>
         </footer>
-    <script src="./assets/js/index.js"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
 
 </body>
 <script>

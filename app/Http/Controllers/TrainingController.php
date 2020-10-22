@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Training;
+use App\Models\Trainee;
+use App\Models\Subscribers;
+use Illuminate\Support\Str;
 
 class TrainingController extends Controller
 {
@@ -19,7 +23,8 @@ class TrainingController extends Controller
      */
     public function index()
     {
-        //
+        $trainings = Training::orderBy('created_at', 'desc')->paginate(15);
+        return view('training.index')->with('trainings', $trainings);
     }
 
     /**
@@ -29,7 +34,7 @@ class TrainingController extends Controller
      */
     public function create()
     {
-        //
+        return view('training.create');
     }
 
     /**
@@ -40,7 +45,57 @@ class TrainingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'cover_image' => 'image|max:2999',
+        ]);
+
+        // Check if training name isn't taken, to avoid errors
+        $test = Training::where('name', $request->name)->first();
+        if ($test) {
+            return back()->with('danger', 'Training Name Is Taken');
+        }
+
+        /*
+            Image process here, kinda seems like it's being repeated through the app.
+        */
+
+        //Get uploaded image name
+        $cover_image = $request->file('cover_image')->getClientOriginalName();
+
+        //Get just name, without the extension
+        $image_name = pathinfo($cover_image, PATHINFO_FILENAME);
+
+        //Get just extension, without the name
+        $image_extension = $request->file('cover_image')->getClientOriginalExtension();
+
+        //How it'll be stored
+        $final_image = $image_name.'_'.time().'.'.$image_extension;
+
+        //Upload image
+        $path = $request->file('cover_image')->storeAs('public/images/training/cover_images', $final_image);
+
+        $training = new Training;
+        $training->name = $request->name;
+        $training->uuid = (string) Str::uuid();
+        $training->price = $request->price;
+        $training->description = $request->description;
+        $training->cover_image = $final_image;
+        $training->save();
+
+        // All trainees and subscribers should get a mail to let them know of the new training
+        $trainees = Trainee::all();
+        $subscribers = Subscribers::all();
+        // foreach ($trainees as $key) {
+        //     $key->notify(new NewTraining());
+        // }
+        // foreach ($subscribers as $key) {
+        //     $key->notify(new NewTraining());
+        // }
+
+        return redirect()->route('trainings');
     }
 
     /**
@@ -51,7 +106,9 @@ class TrainingController extends Controller
      */
     public function show($id)
     {
-        //
+        $training = Training::find($id);
+
+        return view('training.show')->with('training', $training);
     }
 
     /**
@@ -62,7 +119,7 @@ class TrainingController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('training.edit');
     }
 
     /**
@@ -74,7 +131,7 @@ class TrainingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route('training.index');
     }
 
     /**
@@ -83,8 +140,11 @@ class TrainingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($uuid)
     {
-        //
+        $training = Training::where('uuid', $uuid)->first();
+        $training->delete($uuid);
+
+        return redirect()->route('admin.trainings')->with('success', 'Training Deleted Successfully');
     }
 }
