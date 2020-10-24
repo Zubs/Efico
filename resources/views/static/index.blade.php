@@ -11,18 +11,6 @@
     <script src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
-<<<<<<< HEAD
-<!-- <div class="splash ">
-    <img src="https://media.giphy.com/media/lRwEh67kuL4EWx0hHs/giphy.gif" alt="" class="fade-in" width="250" height="250">
-
-</div> -->
-=======
-{{-- <div class="splash ">
-    <img src="https://media.giphy.com/media/lRwEh67kuL4EWx0hHs/giphy.gif" alt="" class="fade-in" width="250" height="250">
-
-</div> --}}
->>>>>>> upstream/main
-
     <div class="top__bg flex col">
         <header class="flex row">
             <div class="logo Flex ">
@@ -122,14 +110,9 @@
                     <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593797575/Graduation_2_zsjhht.gif" width="250" height="200" alt="training illustration">
                 </figure>
                 <span>EFICO University Hubs</span>
-                <span> <p>The personalitized self-assessment tests and soft skills training are delivered by our trained, competent campus ambassadors in each universities we are present. </p> </span>
+                <span> <p>The personalitized self-assessment tests and soft skills training are delivered by our trained, competent campus ambassadors (free of cost) in each universities we are present. </p> </span>
             </li>
             <li class="Flex">
-<<<<<<< HEAD
-
-=======
-                <span><a href="{{ route('trainings') }}" style="text-decoration: none; color: inherit;">Training</a></span>
->>>>>>> upstream/main
                 <figure>
                     <figcaption hidden>Image illustrating Training</figcaption>
                     <a href="{{ route('trainings') }}" style="text-decoration: none; color: inherit;"><img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593797574/Kids_Studying_from_Home_4_yu3dmt.gif" width="250" height="250" alt="training illustration"></a>
@@ -155,10 +138,10 @@
         <h1 hidden>achievements</h1>
         <ul class="Flex row mx-auto">
             <li>
-                <p><span class="special">3000+</span> <br>students trained</p>
+                <p><span class="special">5000+</span> <br>students trained</p>
             </li>
             <li>
-                <p><span class="special">80+</span> <br>student ambassadors</p>
+                <p><span class="special">60+</span> <br>student ambassadors</p>
             </li>
             <li>
                 <p><span class="special">35+</span> <br>universities</p>
@@ -190,16 +173,16 @@
             <h6 class="text-center">UNIUYO</h6>
         </div> -->
         <div class="text">
-            <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1593640125/Ann_Emesue_ffup7v.jpg" width="300" height="300" alt="" class="caroImg">
-            <p class="text-center mt-3">“I used to be scared of what I would do after graduation until EFICO presented me with a better and a real sense of Direction, Efico has taught me that it’s not about Jacks of all trades, but developing mastery of forestanding skills”</p>
-            <h4 class="text-center">Ann Emesue</h4>
-            <h6 class="text-center">UNILAG</h6>
+            <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1599116817/oluwafoyinsayemi_to3bvg.jpg" width="300" height="300" alt="" class="caroImg">
+            <p class="text-center mt-3">“I'm glad I took the opportunity to train with Efico. This training has taught me so much and opened me up to opportunities I didn't know existed. Thanks to this opportunity I will have some leverage over my peers. I look forward to an amazing journey with Efico.”</p>
+            <h4 class="text-center">Owoloja blessing oluwafoyinsayemi</h4>
+            <h6 class="text-center">Covenant University</h6>
         </div>
         <div class="text">
-            <img src="https://via.placeholder.com/300" alt="" class="caroImg">
-            <p class="text-center mt-3">“Efico is an eye-opener and have helped me to make the right decision on the skills that fit my personality type in just a limited time frame of joining the platform”</p>
-            <h4 class="text-center">Anyawu Glory</h4>
-            <h6 class="text-center">UNILAG</h6>
+            <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1599116995/Jessica_5_mbdlju.jpg" alt="" class="caroImg">
+            <p class="text-center mt-3">“My experience as a member of the EFICO Hub Babcock University has been absolutely amazing, the programs and teaching sessions has helped me to gain requisite skills needed to make me be of value. I have learnt so many lessons so far which is mind-blowing and the best part is that I didn’t have to pay a fee to be a member of the hub, so it is quality acquisition of knowledge at no cost whatsoever.”</p>
+            <h4 class="text-center">Jessica Obodo Elue</h4>
+            <h6 class="text-center">Babcock University</h6>
         </div>
     </div>
     <button class="carousel_button next btn" id="next">&gt;</button>
