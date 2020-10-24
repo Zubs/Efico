@@ -179,7 +179,7 @@
             <h6 class="text-center">Covenant University</h6>
         </div>
         <div class="text">
-            <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1599116995/Jessica_5_mbdlju.jpg" alt="" class="caroImg">
+            <img src="https://res.cloudinary.com/dox2gqczu/image/upload/v1599116114/2020-08-22_10.52.06_1_r11sqg.jpg" width="300" height="300" alt="" class="caroImg">
             <p class="text-center mt-3">“My experience as a member of the EFICO Hub Babcock University has been absolutely amazing, the programs and teaching sessions has helped me to gain requisite skills needed to make me be of value. I have learnt so many lessons so far which is mind-blowing and the best part is that I didn’t have to pay a fee to be a member of the hub, so it is quality acquisition of knowledge at no cost whatsoever.”</p>
             <h4 class="text-center">Jessica Obodo Elue</h4>
             <h6 class="text-center">Babcock University</h6>
