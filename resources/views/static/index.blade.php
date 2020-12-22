@@ -73,6 +73,7 @@
                     <div class="modal-footer">
                         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                         <button type="submit" class="btn btn-primary" style="background-color: #3c185b; border: #3c185b;">Submit</button>
+                        <a href="videoPage.html" class="video-page"><i class="fas fa-play-circle" id="play"></i></a>
                     </div>
                 </form>
             </div>
